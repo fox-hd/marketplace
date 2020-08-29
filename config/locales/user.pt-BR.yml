@@ -1,0 +1,10 @@
+---
+
+pt-BR:
+  activerecord:
+    models:
+      user: Empresa
+    attributes:
+      user :
+        company: Empresa
+        
