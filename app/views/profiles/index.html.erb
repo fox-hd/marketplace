@@ -1,0 +1,12 @@
+<h1>Meu perfil</h1>
+<div>
+  <% if @profile.nil? %>
+    <h3>Nenhum perfil cadastrado</h3><br>
+    <h3>Para comprar ou vender produtos é necessario completar o cadastro</h3>
+    <%= link_to 'Completar cadastro', new_profile_path %>
+  <% else %>
+    <%= link_to @profile.name, profile_path(@profile) %><br>
+    <%= current_user.email %> 
+  <% end %>
+</div><br>
+<%= link_to 'Voltar', root_path %>

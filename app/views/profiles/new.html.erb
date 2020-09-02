@@ -1,0 +1,36 @@
+<h1>Cadastrar perfil</h1>
+<ul>
+  <% @profile.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+  <% end %>
+</ul>
+
+<div>
+  <%= form_with model: @profile, local:true do |f| %>
+    <div>
+      <div><%= f.label :name %></div>
+      <div><%= f.text_field :name %></div>
+    </div>
+    <div>
+      <div><%= f.label :nick_name %></div>
+      <div><%= f.text_field :nick_name %></div>
+    </div>
+    <div>
+      <div><%= f.label :date_of_birth %></div>
+      <div><%= f.date_field :date_of_birth %></div>
+    </div>
+    <div>
+      <div><%= f.label :department %></div>
+      <div><%= f.text_field :department %></div>
+    </div>
+    <div>
+      <div><%= f.label :role %></div>
+      <div><%= f.text_field :role %></div>
+    </div>
+    <div>
+      <div><%= f.label :cpf %></div>
+      <div><%= f.text_field :cpf %></div>
+    </div>
+    <%= f.submit 'Cadastrar' %>
+  <% end %>
+</div>

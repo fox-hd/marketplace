@@ -1,0 +1,16 @@
+---
+
+pt-BR:
+  activerecord:
+    models:
+      profile: Perfil
+    attributes:
+      profile :
+        name: Nome
+        nick_name: Nome social
+        date_of_birth: Data de nascimento
+        department: Departamento
+        role: Cargo
+        cpf: CPF
+        company: Empresa
+        email: E-mail
