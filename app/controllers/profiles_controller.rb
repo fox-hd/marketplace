@@ -1,5 +1,5 @@
 class ProfilesController < ApplicationController
-  before_action :authenticate_user!, only: [:index]
+  before_action :authenticate_user!, only: [:index, :show, :new, :create, :edit, :update]
 
   def index
     @profile = Profile.find_by(user_id: current_user.id)
@@ -21,6 +21,20 @@ class ProfilesController < ApplicationController
       redirect_to @profile, notice: 'Cadastro efetuado com sucesso'
     else
       render :new
+    end
+  end
+
+  def edit
+    @profile = Profile.find(params[:id])
+  end
+
+  def update
+    @profile = Profile.find(params[:id])
+    @profile.update(params.require(:profile).permit(:name, :nick_name, :date_of_birth, :department, :role, :cpf))
+    if @profile.save
+      redirect_to @profile, notice: 'Dados alterados com sucesso'
+    else
+      render :edit
     end
   end
 end 

@@ -36,7 +36,7 @@ feature 'user create profile' do
     fill_in 'Departamento', with: 'RH'
     fill_in 'Cargo', with: 'Gerente de RH'
     fill_in 'CPF', with: '068.133.970-52'
-    click_on 'Cadastrar'
+    click_on 'Salvar'
 
     expect(page).to have_content('Fulano Assis')
     expect(page).to have_content('Fulano')
@@ -63,7 +63,7 @@ feature 'user create profile' do
     fill_in 'Departamento', with: ''
     fill_in 'Cargo', with: ''
     fill_in 'CPF', with: ''
-    click_on 'Cadastrar'
+    click_on 'Salvar'
 
     expect(page).to have_content('não pode ficar em branco', count:6)
   end
