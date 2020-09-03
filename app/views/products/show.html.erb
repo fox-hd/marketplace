@@ -1,0 +1,15 @@
+<h1>Detalhes do produto</h1>
+
+<div>
+  <dl>
+  <dt>Produto</dt>
+  <dd><%= @product.name %></dd>
+  <dt>Descrição do produto</dt>
+  <dd><%= @product.description %></dd>
+  <dt>Preço</dt>
+  <dd><%= number_to_currency @product.price %></dd>
+  <dt>Vendedor</dt>
+  <dd><%= @product.profile.name %></dd>
+  </dl>
+</div>
+<%= link_to 'Voltar', products_path %>

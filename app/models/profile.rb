@@ -1,6 +1,7 @@
 class Profile < ApplicationRecord
   belongs_to :company
   belongs_to :user
+  has_many :products
 
   validates :name, :nick_name, :date_of_birth, 
             :department, :role, :cpf, presence: true

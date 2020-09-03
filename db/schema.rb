@@ -10,13 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_01_180855) do
+ActiveRecord::Schema.define(version: 2020_09_03_210545) do
 
   create_table "companies", force: :cascade do |t|
     t.string "name"
     t.string "email"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.decimal "price"
+    t.integer "profile_id", null: false
+    t.integer "company_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["company_id"], name: "index_products_on_company_id"
+    t.index ["profile_id"], name: "index_products_on_profile_id"
   end
 
   create_table "profiles", force: :cascade do |t|
@@ -49,6 +61,8 @@ ActiveRecord::Schema.define(version: 2020_09_01_180855) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "products", "companies"
+  add_foreign_key "products", "profiles"
   add_foreign_key "profiles", "companies"
   add_foreign_key "profiles", "users"
   add_foreign_key "users", "companies"
