@@ -39,7 +39,6 @@ feature 'user profile and view your profile' do
     login_as user_assolan, scope: :user
     visit root_path
     click_on 'Meu perfil'
-    click_on 'Beltrano Assis'
 
     expect(page).to have_content('Beltrano Assis')
     expect(page).to have_content('Beltrano')
@@ -57,7 +56,7 @@ feature 'user profile and view your profile' do
     expect(page).not_to have_content('755.755.510-40')
     expect(page).not_to have_content('fulano@bombril.com')
     expect(page).not_to have_content('Bombril')
-    expect(page).to have_link('Voltar', href: profiles_path)
+    expect(page).to have_link('Voltar', href: root_path)
   end
 
   scenario 'and dont have profile registered' do

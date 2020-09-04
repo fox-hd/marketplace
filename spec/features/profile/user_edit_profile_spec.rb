@@ -19,7 +19,6 @@ feature 'user edit profile' do
     login_as user_bombril, scope: :user
     visit root_path
     click_on 'Meu perfil'
-    click_on 'Fulano Assis'
     click_on 'Editar dados'
 
     fill_in 'Nome', with: 'Beltrano Assis'
@@ -37,7 +36,6 @@ feature 'user edit profile' do
     expect(page).to have_content('Gerente de Marketing')
     expect(page).to have_content('fulano@bombril.com')
     expect(page).to have_content('Bombril')
-    expect(page).to have_link('Voltar', href: profiles_path)
   end
 
   scenario 'attributes cannot be blank' do
@@ -50,7 +48,6 @@ feature 'user edit profile' do
     login_as user_bombril, scope: :user
     visit root_path
     click_on 'Meu perfil'
-    click_on 'Fulano Assis'
     click_on 'Editar dados'
 
     fill_in 'Nome', with: ''
@@ -62,6 +59,6 @@ feature 'user edit profile' do
     click_on 'Salvar'
 
     expect(page).to have_content('não pode ficar em branco', count: 6)
-    expect(page).to have_link('Voltar', href: profile_path(profile))
+    
   end
 end

@@ -1,14 +1,40 @@
-<h1>Meu perfil</h1>
+<header>
+  <h1>Meu perfil</h1>
+</header>
 <div>
   <% if @profile.nil? %>
     <h3>Nenhum perfil cadastrado</h3><br>
     <h3>Para comprar ou vender produtos é necessario completar o cadastro</h3>
     <%= link_to 'Completar cadastro', new_profile_path %>
   <% else %>
-    <p>Empresa: <%= @profile.company.name %></p>
-    <p>Usuário cadastrado: <%= link_to @profile.name, profile_path(@profile) %></p>
-    <p>E-mail: <%= current_user.email %> </p>
+    <div>
+      <li>Empresa: <%= @profile.company.name %></li>
+      <li>Usuário cadastrado: <%= @profile.name %></li>
+      <li>E-mail: <%= current_user.email %></li>
+      <li>Nome social: <%= @profile.nick_name %></li>
+      <li>Data de nascimento: <%= l @profile.date_of_birth %></li>
+      <li>Departamento: <%= @profile.department %></li>
+      <li>Cargo <%= @profile.role %></li>
+      <li>CPF: <%= @profile.cpf %></li> 
+      <li>Nome social: <%= @profile.nick_name %></li>
+      <%= link_to 'Editar dados', edit_profile_path(@profile) %>
+    </div>
     <h3 style="color:red ">Agora você já pode cadastrar seus produtos para realizar suas vendas ou inciar uma compra</h3>
+    <%= link_to 'Anunciar produto', new_product_path %>
   <% end %>
 </div><br>
-<%= link_to 'Voltar', root_path %>
+<div>
+  <% if @products.present? %>
+  <h3>Produtos anunciados</h3>
+    <% @products.each do |product| %>
+      <%= link_to product.name, product_path(product) %>
+    <% end %>
+  <% end %>
+</div>
+<footer>
+  <%= link_to 'Voltar', root_path %>
+</footer>
+
+
+
+

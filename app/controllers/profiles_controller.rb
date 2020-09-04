@@ -3,6 +3,7 @@ class ProfilesController < ApplicationController
 
   def index
     @profile = Profile.find_by(user_id: current_user.id)
+    @products = Product.where(profile: @profile)
   end
 
   def show
@@ -18,7 +19,7 @@ class ProfilesController < ApplicationController
     @profile.user_id = current_user.id
     @profile.company_id = current_user.company_id
     if @profile.save
-      redirect_to @profile, notice: 'Cadastro efetuado com sucesso'
+      redirect_to profiles_path, notice: 'Cadastro efetuado com sucesso'
     else
       render :new
     end
@@ -32,7 +33,7 @@ class ProfilesController < ApplicationController
     @profile = Profile.find(params[:id])
     @profile.update(params.require(:profile).permit(:name, :nick_name, :date_of_birth, :department, :role, :cpf))
     if @profile.save
-      redirect_to @profile, notice: 'Dados alterados com sucesso'
+      redirect_to profiles_path, notice: 'Dados alterados com sucesso'
     else
       render :edit
     end

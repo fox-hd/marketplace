@@ -1,0 +1,23 @@
+<h1>Preencha o formulario para anunciar</h1>
+
+<%= form_with model: @product, local:true do |f| %>
+    <div>
+      <div><%= f.label :name, 'Produto' %></div>
+      <div><%= f.text_field :name %></div>
+    </div>
+    <div>
+      <div><%= f.label :description, 'Descrição' %></div>
+      <div><%= f.text_field :description %></div>
+    </div>
+    <div>
+      <div><%= f.label :price, 'Preço' %></div>
+      <div><%= f.number_field :price %></div>
+    </div>
+    <div>
+      <div><%= f.label :category, 'Categoria' %></div>
+      <div><%= f.select :category, options_for_select([['Eletronicos'],['Esporte e Lazer'],
+                                                      ['Móveis'],['Eletrodomesticos'],
+                                                      ['Brinquedos e Bebês'],['Moda e Beleza']]) %>
+      </div>
+    <%= f.submit 'Anunciar' %>
+<% end %>
