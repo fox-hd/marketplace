@@ -1,8 +1,30 @@
 <h1>Loja</h1>
 
 <div>
-  <% @products.each do |product| %>
-    <%= link_to product.name, product_path(product) %>
+  <% if @profile.nil? %>
+    <h3>Para comprar ou vender produtos é necessario completar o cadastro</h3>
+    <%= link_to 'Completar cadastro', new_profile_path %>
+
+  <% else %>
+  <%= link_to 'Anunciar produtos', new_product_path %>
+  <% end %>
+</div>
+
+<div>
+  <% if @products_profile.present? %>
+  <p>Meus produtos cadastrados</p>
+    <% @products_profile.each do |product_profile| %>
+      <%= link_to product_profile.name, product_path(product_profile) %> ||
+    <% end %>
+  <% end %>
+</div>
+
+<div>
+  <% if @products.present? %>
+  <p>Produtos anunciados</p>
+    <% @products.each do |product| %>
+      <%= link_to product.name, product_path(product) %> ||
+    <% end %>
   <% end %>
 </div>
 

@@ -29,7 +29,7 @@ feature 'User register new product' do
 
     login_as user_bombril, scope: :user
     visit root_path
-    click_on 'Meu perfil'
+    click_on 'Loja'
     click_on 'Anunciar produto'
     fill_in 'Produto', with: 'Notebook'
     fill_in 'Descrição', with: 'Modelo Dell Inspiron, 15 pol, 1TB HD, 16ram, i7'
@@ -52,7 +52,7 @@ feature 'User register new product' do
 
     login_as user_bombril, scope: :user
     visit root_path
-    click_on 'Meu perfil'
+    click_on 'Loja'
     click_on 'Anunciar produto'
     fill_in 'Produto', with: ''
     fill_in 'Descrição', with: ''
@@ -72,7 +72,7 @@ feature 'User register new product' do
 
     login_as user_bombril, scope: :user
     visit root_path
-    click_on 'Meu perfil'
+    click_on 'Loja'
     click_on 'Anunciar produto'
     fill_in 'Produto', with: 'Notebook'
     fill_in 'Descrição', with: 'Modelo Dell Inspiron, 15 pol, 1TB HD, 16ram, i7'

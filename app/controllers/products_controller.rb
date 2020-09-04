@@ -3,6 +3,8 @@ class ProductsController < ApplicationController
 
   def index
     @products = Product.where(company: current_user.company)
+    @profile = Profile.find_by(user_id: current_user.id)
+    @products_profile = Product.where(profile: @profile)
   end
 
   def show

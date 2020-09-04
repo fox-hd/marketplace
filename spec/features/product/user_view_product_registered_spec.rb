@@ -88,7 +88,7 @@ feature 'user view products' do
 
     login_as user_bombril, scope: :user
     visit root_path
-    click_on 'Meu perfil'
+    click_on 'Loja'
 
     expect(page).to have_content('Computador')
     expect(page).to have_content('Teclado')

@@ -19,20 +19,9 @@
       <li>Nome social: <%= @profile.nick_name %></li>
       <%= link_to 'Editar dados', edit_profile_path(@profile) %>
     </div>
-    <h3 style="color:red ">Agora você já pode cadastrar seus produtos para realizar suas vendas ou inciar uma compra</h3>
-    <%= link_to 'Anunciar produto', new_product_path %>
+    <h3 style="color:red ">Agora você já pode cadastrar seus produtos na Loja</h3>
   <% end %>
 </div><br>
-<div>
-  <% if @products.present? %>
-  <h3>Produtos anunciados</h3>
-    <% @products.each do |product| %>
-      <%= product.name %><br>
-      <%= product.price %><br>
-      <%= link_to 'Editar anuncio', product_path(product) %>
-    <% end %>
-  <% end %>
-</div>
 <footer>
   <%= link_to 'Voltar', root_path %>
 </footer>
