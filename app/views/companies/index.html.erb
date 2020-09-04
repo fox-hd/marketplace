@@ -1,0 +1,12 @@
+<h1><%= @company.name %></h1>
+<h2>Colaboradores cadastrados</h2>
+
+<div>
+  <% @profiles.each do |profile| %>
+    <div>
+      <%= link_to "#{profile.name} - #{profile.user.email}", company_path(profile) %>
+    </div><br>
+  <% end %>
+</div>
+
+<footer><%= link_to 'Votlar', root_path %></footer>

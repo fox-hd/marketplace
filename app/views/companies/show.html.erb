@@ -1,0 +1,34 @@
+<header>Perfil do colaborador</header>
+
+<div>
+  <li>Empresa: <%= @profile.name %></li>
+  <li>Usuário cadastrado: <%= @profile.name %></li>
+  <li>E-mail: <%= @profile.user.email %></li>
+  <li>Nome social: <%= @profile.nick_name %></li>
+  <li>Data de nascimento: <%= l @profile.date_of_birth %></li>
+  <li>Departamento: <%= @profile.department %></li>
+  <li>Cargo <%= @profile.role %></li>
+  <li>Nome social: <%= @profile.nick_name %></li>
+</div>
+
+<% if @profile.products.present?%>
+  <p>Produtos cadatrados para esse perfil</p>
+    <% @profile.products.each do |product| %>
+    <div>
+      <%= Product.human_attribute_name(:category) %>
+      <%= product.category %>
+    </div>
+    <div>
+      <%= Product.human_attribute_name(:name) %>
+      <%= product.name %>
+    </div>
+    <div>
+      <%= Product.human_attribute_name(:description) %>
+      <%= product.description %>
+    </div>
+    <div>
+      <%= Product.human_attribute_name(:description) %>
+      <%= product.price %>
+    </div><br>
+    <% end %>
+<% end %>

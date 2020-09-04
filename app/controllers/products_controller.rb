@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :authenticate_user!, only: [:index, :show]
+  before_action :authenticate_user!, only: [:index, :show, :new, :create, :edit, :upgrade]
 
   def index
     @products = Product.where(company: current_user.company)
