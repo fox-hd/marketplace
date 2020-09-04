@@ -64,6 +64,7 @@ feature 'user view products' do
     expect(page).to have_content('Eletronico')
     expect(page).to have_content('Fulano Assis')
     expect(page).to have_link('Voltar', href:products_path)
+    expect(page).not_to have_link('Editar')
   end
 
   scenario 'registered in your profile' do

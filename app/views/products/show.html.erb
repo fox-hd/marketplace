@@ -14,4 +14,4 @@
   <dd><%= @product.profile.name %></dd>
   </dl>
 </div>
-<%= link_to 'Voltar', products_path %>
+<%= link_to 'Voltar', products_path %>|| <%= link_to 'Editar anuncio', edit_product_path(@product) if current_user.id == @product.profile_id %>

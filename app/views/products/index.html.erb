@@ -10,14 +10,14 @@
   <% end %>
 </div>
 
-<div>
+<nav>
   <% if @products_profile.present? %>
   <p>Meus produtos cadastrados</p>
     <% @products_profile.each do |product_profile| %>
       <%= link_to product_profile.name, product_path(product_profile) %> ||
     <% end %>
   <% end %>
-</div>
+</nav>
 
 <div>
   <% if @products.present? %>
