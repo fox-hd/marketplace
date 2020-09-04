@@ -27,7 +27,9 @@
   <% if @products.present? %>
   <h3>Produtos anunciados</h3>
     <% @products.each do |product| %>
-      <%= link_to product.name, product_path(product) %>
+      <%= product.name %><br>
+      <%= product.price %><br>
+      <%= link_to 'Editar anuncio', product_path(product) %>
     <% end %>
   <% end %>
 </div>
