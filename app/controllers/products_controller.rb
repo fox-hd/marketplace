@@ -39,6 +39,12 @@ class ProductsController < ApplicationController
       render :edit
     end
   end
+
+  def search
+    @products_company = Product.where(company: current_user.company)
+    @products = @products_company.where('name || description || category LIKE ?', "%#{params[:q]}%")
+  end
+
   private
 
   def product_params

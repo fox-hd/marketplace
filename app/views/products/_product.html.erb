@@ -1,0 +1,10 @@
+<div>
+  <dl>
+  <dt>Categoria</dt>
+  <dd><%= product.category %></dd>
+  <dt>Produto</dt>
+  <dd><%= link_to product.name, product_path(product) %></dd>
+  <dt>Preço</dt>
+  <dd><%= number_to_currency product.price %></dd>
+  </dl>
+</div>

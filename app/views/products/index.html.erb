@@ -10,6 +10,15 @@
   <% end %>
 </div>
 
+<div>
+  <p>Digite um nome ou categoria do produto</p>
+  <%= form_with url: search_products_path, method: :get, local:true do|f| %>
+    <%= f.label :q, 'Pesquisar produtos' %>
+    <%= f.text_field :q %>
+    <%= f.submit 'Pesquisar' %>
+  <% end %>
+</div>
+
 <nav>
   <% if @products_profile.present? %>
   <p>Meus produtos cadastrados</p>
