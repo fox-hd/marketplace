@@ -24,3 +24,11 @@
       <div><%= @profile.role %></div>
       <div><%= Profile.human_attribute_name(:cpf) %></div>
       <div><%= @profile.cpf %></div>
+      <%= link_to 'Editar dados', edit_profile_path(@profile) %>
+    </div>
+    <h3 style="color:red ">Agora você já pode cadastrar seus produtos na Loja</h3>
+  <% end %>
+</div><br>
+<footer>
+  <%= link_to 'Voltar', root_path %>
+</footer>
