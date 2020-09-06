@@ -8,24 +8,19 @@
     <%= link_to 'Completar cadastro', new_profile_path %>
   <% else %>
     <div>
-      <li>Empresa: <%= @profile.company.name %></li>
-      <li>Usuário cadastrado: <%= @profile.name %></li>
-      <li>E-mail: <%= current_user.email %></li>
-      <li>Nome social: <%= @profile.nick_name %></li>
-      <li>Data de nascimento: <%= l @profile.date_of_birth %></li>
-      <li>Departamento: <%= @profile.department %></li>
-      <li>Cargo <%= @profile.role %></li>
-      <li>CPF: <%= @profile.cpf %></li> 
-      <li>Nome social: <%= @profile.nick_name %></li>
-      <%= link_to 'Editar dados', edit_profile_path(@profile) %>
-    </div>
-    <h3 style="color:red ">Agora você já pode cadastrar seus produtos na Loja</h3>
-  <% end %>
-</div><br>
-<footer>
-  <%= link_to 'Voltar', root_path %>
-</footer>
-
-
-
-
+      <div><p>Company</p></div>
+      <div><%= @profile.company.name %></div>
+      <div><%= Profile.human_attribute_name(:name) %></div>
+      <div><%= @profile.name %></div>
+      <div><%= Profile.human_attribute_name(:email) %></div>
+      <div><%= current_user.email %></div>
+      <div><%= Profile.human_attribute_name(:nick_name) %></div>
+      <div><%= @profile.nick_name %></div>
+      <div><%= Profile.human_attribute_name(:date_of_birth) %></div>
+      <div><%= l @profile.date_of_birth %></div>
+      <div><%= Profile.human_attribute_name(:department) %></div>
+      <div><%= @profile.department %></div>
+      <div><%= Profile.human_attribute_name(:role) %></div>
+      <div><%= @profile.role %></div>
+      <div><%= Profile.human_attribute_name(:cpf) %></div>
+      <div><%= @profile.cpf %></div>

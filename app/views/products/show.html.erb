@@ -2,13 +2,13 @@
 
 <div>
   <dl>
-  <dt>Categoria</dt>
+  <dt><%= Product.human_attribute_name(:category) %></dt>
   <dd><%= @product.category %></dd>
-  <dt>Produto</dt>
+  <dt><%= Product.human_attribute_name(:name) %></dt>
   <dd><%= @product.name %></dd>
-  <dt>Descrição do produto</dt>
+  <dt><%= Product.human_attribute_name(:description) %></dt>
   <dd><%= @product.description %></dd>
-  <dt>Preço</dt>
+  <dt><%= Product.human_attribute_name(:price) %></dt>
   <dd><%= number_to_currency @product.price %></dd>
   <dt>Vendedor</dt>
   <dd><%= @product.profile.name %></dd>

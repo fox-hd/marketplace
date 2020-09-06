@@ -58,6 +58,7 @@ feature 'user view products' do
     click_on 'Loja'
     click_on 'Computador'
 
+    expect(page).to have_content('Categoria')
     expect(page).to have_content('Computador')
     expect(page).to have_content('PC tela LCD, 16 Ram, 1TB HD, I5')
     expect(page).to have_content('2.000,00')
