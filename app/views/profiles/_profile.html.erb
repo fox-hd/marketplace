@@ -1,13 +1,10 @@
-<header>Perfil do colaborador</header>
-
-<div>
 <dl>
   <dt><%= Company.human_attribute_name(:name)%></dt>
   <dd><%= @profile.company.name %></dd>
   <dt><%= Profile.human_attribute_name(:name) %></dt>
   <dd><%= @profile.name %></dd>
   <dt><%= Profile.human_attribute_name(:email) %></dt>
-  <dd><%= @profile.user.email %></dd>
+  <dd><%= current_user.email %></dd>
   <dt><%= Profile.human_attribute_name(:nick_name) %></dt>
   <dd><%= @profile.nick_name %></dd>
   <dt><%= Profile.human_attribute_name(:date_of_birth) %></dt>
@@ -19,26 +16,3 @@
   <dt><%= Profile.human_attribute_name(:cpf) %></dt>
   <dd><%= @profile.cpf %></dd>
 </dl>
-</div>
-
-<% if @profile.products.present?%>
-  <p>Produtos cadatrados para esse perfil</p>
-    <% @profile.products.each do |product| %>
-    <div>
-      <%= Product.human_attribute_name(:category) %>
-      <%= product.category %>
-    </div>
-    <div>
-      <%= Product.human_attribute_name(:name) %>
-      <%= product.name %>
-    </div>
-    <div>
-      <%= Product.human_attribute_name(:description) %>
-      <%= product.description %>
-    </div>
-    <div>
-      <%= Product.human_attribute_name(:description) %>
-      <%= product.price %>
-    </div><br>
-    <% end %>
-<% end %>

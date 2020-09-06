@@ -6,6 +6,6 @@ pt-BR:
       company: Empresa
     attributes:
       company :
-        name: Nome
+        name: Empresa
         email: E-mail
         

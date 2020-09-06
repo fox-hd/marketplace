@@ -70,16 +70,16 @@ feature 'user view list profile of company' do
                                       role: 'Gerente de RH', company:company_bombril, user:user_bombril, cpf: '755.755.510-40')
     Product.create!(name: 'Computador', description: 'PC tela LCD, 16 Ram, 1TB HD, I5', 
                     price: 2000, category: 'Eletronico', profile: profile_bombril, company: company_bombril)
-    user_bombril = User.create!(email: 'sicrano@bombril.com', 
+    second_user_bombril = User.create!(email: 'sicrano@bombril.com', 
                                 password: '12345678', company: company_bombril)
     profile_bombril = Profile.create!(name: 'Sicrano Assis', nick_name: 'Fulano', date_of_birth: '12/10/1984', department:'Marketing',
-                                      role: 'Gerente de Mk', company:company_bombril, user:user_bombril, cpf: '98.428.988/0001-99')
+                                      role: 'Gerente de Mk', company:company_bombril, user:second_user_bombril, cpf: '98.428.988/0001-99')
     Product.create!(name: 'Bicicleta', description: 'Modelo Mk, 18 marchas, aro 29', 
                     price: 900, category: 'Esporte e Lazer', profile: profile_bombril, company: company_bombril)
-    another_user_bombril = User.create!(email: 'beltrano@bombril.com', 
+    third_user_bombril = User.create!(email: 'beltrano@bombril.com', 
                                 password: '12345678', company: company_bombril)
 
-    login_as another_user_bombril, scope: :user
+    login_as third_user_bombril, scope: :user
     visit root_path
     click_on 'Colaboradores cadastrados'
     click_on 'Fulano Assis - fulano@bombril.com'

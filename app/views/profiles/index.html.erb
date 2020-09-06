@@ -1,34 +1,20 @@
 <header>
   <h1>Meu perfil</h1>
 </header>
-<div>
+<div id="container">
   <% if @profile.nil? %>
     <h3>Nenhum perfil cadastrado</h3><br>
-    <h3>Para comprar ou vender produtos é necessario completar o cadastro</h3>
-    <%= link_to 'Completar cadastro', new_profile_path %>
+      <h3>Para comprar ou vender produtos é necessario completar o cadastro</h3>
+      <%= link_to 'Completar cadastro', new_profile_path %>
+ 
   <% else %>
-    <div>
-      <div><p>Company</p></div>
-      <div><%= @profile.company.name %></div>
-      <div><%= Profile.human_attribute_name(:name) %></div>
-      <div><%= @profile.name %></div>
-      <div><%= Profile.human_attribute_name(:email) %></div>
-      <div><%= current_user.email %></div>
-      <div><%= Profile.human_attribute_name(:nick_name) %></div>
-      <div><%= @profile.nick_name %></div>
-      <div><%= Profile.human_attribute_name(:date_of_birth) %></div>
-      <div><%= l @profile.date_of_birth %></div>
-      <div><%= Profile.human_attribute_name(:department) %></div>
-      <div><%= @profile.department %></div>
-      <div><%= Profile.human_attribute_name(:role) %></div>
-      <div><%= @profile.role %></div>
-      <div><%= Profile.human_attribute_name(:cpf) %></div>
-      <div><%= @profile.cpf %></div>
-      <%= link_to 'Editar dados', edit_profile_path(@profile) %>
+  <div id="description">
+    <h3>Agora você já pode cadastrar seus produtos na Loja</h3>
+    <%= render @profile%>
+    <%= link_to 'Editar dados', edit_profile_path(@profile) %>
     </div>
-    <h3 style="color:red ">Agora você já pode cadastrar seus produtos na Loja</h3>
   <% end %>
-</div><br>
+</div>
 <footer>
   <%= link_to 'Voltar', root_path %>
 </footer>
