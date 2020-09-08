@@ -17,12 +17,20 @@
 
 
 <div id="comment-product">
- <p>Comentários</p>
   <% @product.comments.each do |comment|%>
     <div class="ac_box_top">
       <div class="ac_box_cont">
         <p>Autor:<%= comment.profile.name %></p>
-        <%= comment.body %>
+        <p>Pergunta:  <%= comment.body %></p>
+        <% comment.answers.each do |answear| %><br>
+          <p>Vendedor: <%= @product.profile.name %></p>
+          <p>Resposta: <%= answear.body %></p>
+        <% end %>
+        <div>
+          <% if @product.profile_id == current_user.profile.id  %>
+            <%= render partial: 'answers/form', locals:{comment:comment} %>
+          <% end %>
+        </div>  
       </div>
     </div>
   <% end %>
