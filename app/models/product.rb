@@ -1,6 +1,7 @@
 class Product < ApplicationRecord
   belongs_to :profile
   belongs_to :company
+  has_many :comments, dependent: :destroy
 
   validates :name, :description, :price, :category, presence:true
   validates :price, numericality: {greater_than: 0}

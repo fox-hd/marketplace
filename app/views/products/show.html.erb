@@ -14,4 +14,27 @@
   <dd><%= @product.profile.name %></dd>
   </dl>
 </div>
+
+
+<div id="comment-product">
+ <p>Comentários</p>
+  <% @product.comments.each do |comment|%>
+    <div class="ac_box_top">
+      <div class="ac_box_cont">
+        <p>Autor:<%= comment.profile.name %></p>
+        <%= comment.body %>
+      </div>
+    </div>
+  <% end %>
+</div>
+<% if current_user.profile.present? %>
+  <%= render partial: 'comments/form', locals:{product: @product}%>
+<% else %>
+  <h3>Para deixar comentarios é necessario completar seu cadastro</h3>
+<% end %>
+
 <%= link_to 'Voltar', products_path %>|| <%= link_to 'Editar anuncio', edit_product_path(@product) if current_user.id == @product.profile_id %>
+
+
+
+ 

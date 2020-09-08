@@ -8,7 +8,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   before_validation :set_company
-
   
 
   private

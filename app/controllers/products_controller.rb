@@ -18,7 +18,7 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     @product.company_id = current_user.company_id
-    @product.profile_id = current_user.id
+    @product.profile_id = current_user.profile.id
     if @product.save
       redirect_to @product
     else

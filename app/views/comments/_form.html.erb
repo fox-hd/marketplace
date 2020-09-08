@@ -1,0 +1,9 @@
+<div id="div-center">
+  <div id="frm-post">
+    <h2>Deixe seu comentário</h2>
+    <%= form_with model:[@product, @product.comments.build], local:true do |f| %>
+      <div><%= f.label :body, 'Comentário' %> </div>
+      <div><%= f.text_area :body %> </div>
+      <%= f.submit 'Enviar' %>
+    <% end %>
+  </div>
