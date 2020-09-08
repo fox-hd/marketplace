@@ -109,4 +109,6 @@ feature 'buyer visit page product' do
 
     expect(page).not_to have_content('Responder')
   end
+
+
 end

@@ -1,5 +1,5 @@
 class CompaniesController < ApplicationController
-  before_action :authenticate_user!, only: [:index]
+  before_action :authenticate_user!, only: [:index, :show]
 
   def index
       @company = Company.find_by(id: current_user.company_id)

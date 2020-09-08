@@ -19,8 +19,8 @@ feature 'seller visit page product' do
 
     login_as user_bombril, scope: :user
     visit root_path
-    click_on 'Loja'
-    find('nav').click_link('Computador')
+    click_on 'Meus anuncios'
+    click_on 'Computador'
     
     expect(page).to have_content('Eletronicos')
     expect(page).to have_content('Computador')
@@ -48,8 +48,8 @@ feature 'seller visit page product' do
     
     login_as user_bombril, scope: :user
     visit root_path
-    click_on 'Loja'
-    find('nav').click_link('Computador')
+    click_on 'Meus anuncios'
+    click_on 'Computador'
     fill_in 'Responder', with: 'Posso dar 3 meses de garantia'
     click_on 'Enviar resposta'
 

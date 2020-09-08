@@ -4,8 +4,9 @@ Rails.application.routes.draw do
   resources :profiles, only: [:index, :show, :new, :create, :edit, :update]
   resources :products , only: [:index, :show, :new, :create, :edit, :update] do
     get 'search', on: :collection
-    resources :comments, only: [:create]    
+    resources :comments, only: [:create]
   end
+  get 'my_products', to: 'products#my_products'
 
   resources :companies, only: [:index, :show]
   resources :comments, only: [] do 

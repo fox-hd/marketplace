@@ -1,19 +1,23 @@
 <div id="g-home">
   <% if user_signed_in? %>
-    <%= current_user.name %>
     <%= link_to 'Sair', destroy_user_session_path, method: :delete %>
   <% else %>
     <%= link_to 'Entrar', new_user_session_path %>
   <% end %>
 
   <header>
+  <% if @profile.present? %>
+    <h2>Olá, <%= @profile.name.capitalize %></h2>
+  <% end %>
   <h2>Bem vindo ao Marketplace</h2>
   </header>
+  
   <div class="nav">
   <ul>
     <li><%= link_to 'Meu perfil', profiles_path %></li>
     <li><%= link_to 'Loja', products_path %></li>
     <li><%= link_to 'Colaboradores cadastrados', companies_path %></li>
+    <li><%= link_to 'Meus anuncios', my_products_path %></li>
   </ul>
   </div>
 </div>

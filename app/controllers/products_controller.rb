@@ -3,8 +3,6 @@ class ProductsController < ApplicationController
 
   def index
     @products = Product.where(company: current_user.company)
-    @profile = Profile.find_by(user_id: current_user.id)
-    @products_profile = Product.where(profile: @profile)
   end
 
   def show
@@ -43,6 +41,11 @@ class ProductsController < ApplicationController
   def search
     @products_company = Product.where(company: current_user.company)
     @products = @products_company.where('name || description || category LIKE ?', "%#{params[:q]}%")
+  end
+
+  def my_products
+    @profile = Profile.find_by(user_id: current_user.id)
+    @products_profile = Product.where(profile: @profile)
   end
 
   private

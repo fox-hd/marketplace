@@ -41,8 +41,6 @@
   <h3>Para deixar comentarios é necessario completar seu cadastro</h3>
 <% end %>
 
-<%= link_to 'Voltar', products_path %>|| <%= link_to 'Editar anuncio', edit_product_path(@product) if current_user.id == @product.profile_id %>
-
-
-
- 
+<%= link_to 'Voltar para loja', products_path %> ||
+<%= link_to 'Editar anuncio', edit_product_path(@product) if current_user.id == @product.profile_id %> ||
+<%= link_to 'Voltar para meus anuncios', my_products_path %>
