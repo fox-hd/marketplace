@@ -48,6 +48,13 @@ class ProductsController < ApplicationController
     @products_profile = Product.where(profile: @profile)
   end
 
+  def accept
+    @product = Product.find(params[:id])
+    @product.order
+    @product.sold!
+    redirect_to product_order_path(@product, @product.order), notice: 'Venda finalizada'
+  end
+
   private
 
   def product_params

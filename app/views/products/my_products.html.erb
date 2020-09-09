@@ -15,3 +15,20 @@
     <% end %>
   <% end %>
 </nav>
+
+<nav>
+  <% if @products_profile.waiting %>
+    <h2>Aguardando confirmação de venda</h2>
+    <% @products_profile.waiting.each do |product_waiting| %>
+    <dl>
+      <dt>Comprador</dt>
+      <dd><%= product_waiting.order.profile.name %>  </dd>
+      <dt><%= Product.human_attribute_name(:name) %></dt>
+      <dd><%= product_waiting.name %></dd>
+    </dl>
+      <%= link_to 'Ver detalhes', product_order_path(product_waiting, product_waiting.order) %>
+    <% end %>
+  <% end %>
+</nav>
+
+<%= link_to 'Voltar', root_path %>

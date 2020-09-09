@@ -3,6 +3,7 @@ class Profile < ApplicationRecord
   belongs_to :user
   has_many :products, dependent: :destroy
   has_many :comments , dependent: :destroy
+  has_many :order
 
   validates :name, :nick_name, :date_of_birth, 
             :department, :role, :cpf, presence: true

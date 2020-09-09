@@ -1,5 +1,15 @@
 <h1>Detalhes do produto</h1>
-
+<% if @product.available? %>
+  <% if current_user.profile.present? && @product.profile_id != current_user.profile.id  %>
+    <%= link_to 'Comprar produto', new_product_order_path(@product) %>
+  <% end %>
+<% end %>
+<% if @product.waiting? %>
+  <h2>Esse produto não esta mais disponivel para venda</h2>
+<% end %>
+<% if @product.sold?%>
+  <h2>Esse produto já foi vendido</h2>
+<% end %>
 <div>
   <dl>
   <dt><%= Product.human_attribute_name(:category) %></dt>
@@ -38,7 +48,7 @@
 <% if current_user.profile.present? %>
   <%= render partial: 'comments/form', locals:{product: @product}%>
 <% else %>
-  <h3>Para deixar comentarios é necessario completar seu cadastro</h3>
+  <h3>Para deixar comentarios e fazer compras  é necessario completar seu cadastro</h3>
 <% end %>
 
 <%= link_to 'Voltar para loja', products_path %> ||

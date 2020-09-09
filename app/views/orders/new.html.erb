@@ -1,0 +1,38 @@
+<h2>Confira os detalhes do produto e depois confirme a compra</h2>
+<h3>Dados do vendedor</h3>
+<h3><%= @product.profile.name %></h3>
+<div>
+  <dl>
+    <dt><%= Product.human_attribute_name(:category) %></dt>
+    <dd><%= @product.category %></dd>
+    <dt><%= Product.human_attribute_name(:name) %></dt>
+    <dd><%= @product.name %></dd>
+    <dt><%= Product.human_attribute_name(:description) %></dt>
+    <dd><%= @product.description %></dd>
+    <dt><%= Product.human_attribute_name(:price) %></dt>
+    <dd><%= number_to_currency @product.price %></dd>  
+  </dl>
+</div>
+
+<h3>Dados do comprador</h3>
+<h3></h3>
+<div>
+  <dl>
+    <dt><%= Profile.human_attribute_name(:name) %></dt>
+    <dd><%= current_user.profile.name %></dd>
+    <dt><%= Profile.human_attribute_name(:cpf) %></dt>
+    <dd><%= current_user.profile.cpf %></dd>
+    <dt><%= Profile.human_attribute_name(:date_of_birth) %></dt>
+    <dd><%= current_user.profile.date_of_birth %></dd>
+    <dt><%= Profile.human_attribute_name(:department) %></dt>
+    <dd><%= current_user.profile.department %></dd>
+  </dl>
+</div>
+
+<%= form_with model:[@product, @order], local:true do |f| %>
+  <%= f.label :body, 'Observações' %> 
+  <%= f.text_area :body %>
+  <%= f.submit 'Finalizar compra' %>
+<% end %>
+
+<%= link_to 'Voltar', product_path(@product) %>

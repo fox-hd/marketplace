@@ -77,7 +77,7 @@ feature 'buyer visit page product' do
     click_on 'Loja'
     click_on 'Computador'
 
-    expect(page).to have_content('Para deixar comentarios é necessario completar seu cadastro')
+    expect(page).to have_content('Para deixar comentarios e fazer compras é necessario completar seu cadastro')
     expect(page).not_to have_content('Deixe seu comentário')
     expect(page).to have_link('Voltar', href: products_path)
   end

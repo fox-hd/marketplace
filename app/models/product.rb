@@ -2,6 +2,7 @@ class Product < ApplicationRecord
   belongs_to :profile
   belongs_to :company
   has_many :comments, dependent: :destroy
+  has_one :order
 
   enum status: {available:0 , waiting: 10, sold:20}
 

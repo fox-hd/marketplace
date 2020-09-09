@@ -1,0 +1,39 @@
+<h2>Confira os detalhes do produto e depois confirme a venda</h2>
+
+  <%= link_to 'Confirmar venda', accept_product_path(@product), method: :post %>
+  <%= link_to 'Cancelar venda', canceled_product_path(@product), method: :post %>
+  <% if @product.sold?%>
+    <h2>Essa venda foi finalizada</h2>
+  <% end %>
+
+<h3>Dados do vendedor</h3>
+<h3><%= @product.profile.name %></h3>
+<div>
+  <dl>
+    <dt><%= Product.human_attribute_name(:category) %></dt>
+    <dd><%= @product.category %></dd>
+    <dt><%= Product.human_attribute_name(:name) %></dt>
+    <dd><%= @product.name %></dd>
+    <dt><%= Product.human_attribute_name(:department) %></dt>
+    <dd><%= @product.profile.department %></dd>
+    <dt><%= Product.human_attribute_name(:description) %></dt>
+    <dd><%= @product.description %></dd>
+    <dt><%= Product.human_attribute_name(:price) %></dt>
+    <dd><%= number_to_currency @product.price %></dd>  
+  </dl>
+</div>
+
+<h3>Dados do comprador</h3>
+<h3></h3>
+<div>
+  <dl>
+    <dt><%= Profile.human_attribute_name(:name) %></dt>
+    <dd><%= @order.profile.name %></dd>
+    <dt><%= Profile.human_attribute_name(:cpf) %></dt>
+    <dd><%= @order.profile.cpf %></dd>
+    <dt><%= Profile.human_attribute_name(:date_of_birth) %></dt>
+    <dd><%= l @order.profile.date_of_birth %></dd>
+    <dt><%= Profile.human_attribute_name(:department) %></dt>
+    <dd><%= @order.profile.department %></dd>
+  </dl>
+</div>
