@@ -1,6 +1,13 @@
 require 'rails_helper'
 
 feature 'seller receive notification about product' do
+  scenario 'and must be sign in' do
+    
+    visit products_path()
+
+    expect(current_path).to eq new_user_session_path
+  end
+
   scenario 'and view notification about order' do
     company_bombril = Company.create!(name: 'Bombril', email: 'teste@bombril.com.br')
     user_bombril = User.create!(email: 'fulano@bombril.com', 
@@ -13,7 +20,7 @@ feature 'seller receive notification about product' do
     another_user_bombril = User.create!(email: 'sicrano@bombril.com', 
                                         password: '12345678', company: company_bombril)
     another_profile_bombril = Profile.create!(name: 'Sicrano Assis', nick_name: 'Sicrano', date_of_birth: '12/10/1985', department:'Marketing',
-                                              role: 'Gerente de marketing', company:company_bombril, user:another_user_bombril, cpf: '755.755.510-40')
+                                              role: 'Gerente de marketing', company:company_bombril, user:another_user_bombril, cpf: '696.136.810-78')
     order = Order.create!(product:product, profile: another_profile_bombril, body: 'Podemos combinar a entrega?', status: :waiting)
     
     login_as user_bombril, scope: :user
@@ -38,7 +45,7 @@ feature 'seller receive notification about product' do
     another_user_bombril = User.create!(email: 'sicrano@bombril.com', 
                                         password: '12345678', company: company_bombril)
     another_profile_bombril = Profile.create!(name: 'Sicrano Assis', nick_name: 'Sicrano', date_of_birth: '12/10/1985', department:'Marketing',
-                                              role: 'Gerente de marketing', company:company_bombril, user:another_user_bombril, cpf: '755.755.510-40')
+                                              role: 'Gerente de marketing', company:company_bombril, user:another_user_bombril, cpf: '696.136.810-78')
     order = Order.create!(product:product, profile: another_profile_bombril, body: 'Podemos combinar a entrega?', status: :waiting)
     
     login_as user_bombril, scope: :user
@@ -50,7 +57,7 @@ feature 'seller receive notification about product' do
     expect(page).to have_content('755.755.510-40')
     expect(page).to have_content('RH')
     expect(page).to have_content('Sicrano Assis')
-    expect(page).to have_content('755.755.510-40')
+    expect(page).to have_content('696.136.810-78')
     expect(page).to have_content('12/10/1985')
     expect(page).to have_content('Marketing')
     expect(page).to have_content('Confirmar venda')
@@ -69,7 +76,7 @@ feature 'seller receive notification about product' do
     another_user_bombril = User.create!(email: 'sicrano@bombril.com', 
                                         password: '12345678', company: company_bombril)
     another_profile_bombril = Profile.create!(name: 'Sicrano Assis', nick_name: 'Sicrano', date_of_birth: '12/10/1985', department:'Marketing',
-                                              role: 'Gerente de marketing', company:company_bombril, user:another_user_bombril, cpf: '755.755.510-40')
+                                              role: 'Gerente de marketing', company:company_bombril, user:another_user_bombril, cpf: '696.136.810-78')
     order = Order.create!(product:product, profile: another_profile_bombril, body: 'Podemos combinar a entrega?', status: :waiting)
     
     login_as user_bombril, scope: :user
@@ -86,7 +93,7 @@ feature 'seller receive notification about product' do
     expect(page).to have_content('755.755.510-40')
     expect(page).to have_content('RH')
     expect(page).to have_content('Sicrano Assis')
-    expect(page).to have_content('755.755.510-40')
+    expect(page).to have_content('696.136.810-78')
     expect(page).to have_content('12/10/1985')
     expect(page).to have_content('Marketing')
     expect(page).to have_content('Essa venda foi finalizada')
@@ -104,7 +111,7 @@ feature 'seller receive notification about product' do
     another_user_bombril = User.create!(email: 'sicrano@bombril.com', 
                                         password: '12345678', company: company_bombril)
     another_profile_bombril = Profile.create!(name: 'Sicrano Assis', nick_name: 'Sicrano', date_of_birth: '12/10/1985', department:'Marketing',
-                                              role: 'Gerente de marketing', company:company_bombril, user:another_user_bombril, cpf: '755.755.510-40')
+                                              role: 'Gerente de marketing', company:company_bombril, user:another_user_bombril, cpf: '696.136.810-78')
     order = Order.create!(product:product, profile: another_profile_bombril, body: 'Podemos combinar a entrega?', status: :waiting)
     
     login_as user_bombril, scope: :user
@@ -121,7 +128,7 @@ feature 'seller receive notification about product' do
     expect(page).to have_content('755.755.510-40')
     expect(page).to have_content('RH')
     expect(page).to have_content('Sicrano Assis')
-    expect(page).to have_content('755.755.510-40')
+    expect(page).to have_content('696.136.810-78')
     expect(page).to have_content('12/10/1985')
     expect(page).to have_content('Marketing')
     expect(page).to have_content('Venda recusada')
@@ -140,7 +147,7 @@ feature 'seller receive notification about product' do
     another_user_bombril = User.create!(email: 'sicrano@bombril.com', 
                                         password: '12345678', company: company_bombril)
     another_profile_bombril = Profile.create!(name: 'Sicrano Assis', nick_name: 'Sicrano', date_of_birth: '12/10/1985', department:'Marketing',
-                                              role: 'Gerente de marketing', company:company_bombril, user:another_user_bombril, cpf: '755.755.510-40')
+                                              role: 'Gerente de marketing', company:company_bombril, user:another_user_bombril, cpf: '696.136.810-78')
     order = Order.create!(product:product, profile: another_profile_bombril, body: 'Podemos combinar a entrega?', status: :waiting)
     
     login_as user_bombril, scope: :user
@@ -164,7 +171,7 @@ feature 'seller receive notification about product' do
     another_user_bombril = User.create!(email: 'sicrano@bombril.com', 
                                         password: '12345678', company: company_bombril)
     another_profile_bombril = Profile.create!(name: 'Sicrano Assis', nick_name: 'Sicrano', date_of_birth: '12/10/1985', department:'Marketing',
-                                              role: 'Gerente de marketing', company:company_bombril, user:another_user_bombril, cpf: '755.755.510-40')
+                                              role: 'Gerente de marketing', company:company_bombril, user:another_user_bombril, cpf: '696.136.810-78')
     order = Order.create!(product:product, profile: another_profile_bombril, body: 'Podemos combinar a entrega?', status: :waiting)
     
     login_as user_bombril, scope: :user

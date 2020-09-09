@@ -3,7 +3,7 @@ require 'rails_helper'
 feature 'user view list profile of company' do
   scenario 'and must be sign in' do
 
-    visit root_path
+    visit companies_path
 
     expect(current_path).to eq new_user_session_path
   end
@@ -19,7 +19,7 @@ feature 'user view list profile of company' do
     user_bombril = User.create!(email: 'sicrano@bombril.com', 
                                 password: '12345678', company: company_bombril)
     profile_bombril = Profile.create!(name: 'Sicrano Assis', nick_name: 'Fulano', date_of_birth: '12/10/1984', department:'Marketing',
-                                      role: 'Gerente de Mk', company:company_bombril, user:user_bombril, cpf: '98.428.988/0001-99')
+                                      role: 'Gerente de Mk', company:company_bombril, user:user_bombril, cpf: '982.445.890-51')
     Product.create!(name: 'Bicicleta', description: 'Modelo Mk, 18 marchas, aro 29', 
                     price: 900, category: 'Esporte e Lazer', profile: profile_bombril, company: company_bombril)
     another_user_bombril = User.create!(email: 'beltrano@bombril.com', 
@@ -44,13 +44,13 @@ feature 'user view list profile of company' do
     user_bombril = User.create!(email: 'sicrano@bombril.com', 
                                 password: '12345678', company: company_bombril)
     profile_bombril = Profile.create!(name: 'Sicrano Assis', nick_name: 'Fulano', date_of_birth: '12/10/1984', department:'Marketing',
-                                      role: 'Gerente de Mk', company:company_bombril, user:user_bombril, cpf: '98.428.988/0001-99')
+                                      role: 'Gerente de Mk', company:company_bombril, user:user_bombril, cpf: '982.445.890-51')
 
     company_assolan = Company.create!(name: 'Assolan', email: 'teste@assolan.com.br')
     user_assolan = User.create!(email: 'beltrano@assolan.com', 
                                 password: '12345678', company: company_assolan)
     profile_bombril = Profile.create!(name: 'Beltrano Assis', nick_name: 'Beltrano', date_of_birth: '12/10/1984', department:'Engenharia',
-                                      role: 'Engenhiro eletronico', company:company_assolan, user:user_assolan, cpf: '43.661.987/0001-06')
+                                      role: 'Engenhiro eletronico', company:company_assolan, user:user_assolan, cpf: '549.433.460-06')
 
     login_as user_assolan, scope: :user
     visit root_path
@@ -73,7 +73,7 @@ feature 'user view list profile of company' do
     second_user_bombril = User.create!(email: 'sicrano@bombril.com', 
                                 password: '12345678', company: company_bombril)
     profile_bombril = Profile.create!(name: 'Sicrano Assis', nick_name: 'Fulano', date_of_birth: '12/10/1984', department:'Marketing',
-                                      role: 'Gerente de Mk', company:company_bombril, user:second_user_bombril, cpf: '98.428.988/0001-99')
+                                      role: 'Gerente de Mk', company:company_bombril, user:second_user_bombril, cpf: '549.433.460-06')
     Product.create!(name: 'Bicicleta', description: 'Modelo Mk, 18 marchas, aro 29', 
                     price: 900, category: 'Esporte e Lazer', profile: profile_bombril, company: company_bombril)
     third_user_bombril = User.create!(email: 'beltrano@bombril.com', 

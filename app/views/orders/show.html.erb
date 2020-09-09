@@ -1,4 +1,4 @@
-<h2>Confira os detalhes do produto e depois confirme a venda</h2>
+<h2>Confira os detalhes do produto</h2>
 
 <% if @order.product.profile.user_id == current_user.id && @order.waiting? %>
   <%= link_to 'Confirmar venda', accept_order_path(@order), method: :post %>
@@ -16,19 +16,32 @@
 <% end %>
 
 <h3>Dados do vendedor</h3>
-<h3><%= @product.profile.name %></h3>
+<div>
+  <dl>
+    <dt><%= Profile.human_attribute_name(:name) %><</dt>
+    <dd><%= @product.profile.name %><</dd>
+    <dt><%= Profile.human_attribute_name(:cpf) %></dt>
+    <dd><%= @product.profile.cpf %></dd>
+    <dt><%= Profile.human_attribute_name(:date_of_birth) %></dt>
+    <dd><%= l @product.profile.date_of_birth %></dd>
+    <dt><%= Profile.human_attribute_name(:department) %></dt>
+    <dd><%= @product.profile.department %></dd>
+    <dt><%= Profile.human_attribute_name(:role) %></dt>
+    <dd><%= @product.profile.role %></dd>
+  </dl>
+</div>
+
+<h3>Descrição do produto</h3>
 <div>
   <dl>
     <dt><%= Product.human_attribute_name(:category) %></dt>
     <dd><%= @product.category %></dd>
     <dt><%= Product.human_attribute_name(:name) %></dt>
     <dd><%= @product.name %></dd>
-    <dt><%= Product.human_attribute_name(:department) %></dt>
-    <dd><%= @product.profile.department %></dd>
     <dt><%= Product.human_attribute_name(:description) %></dt>
     <dd><%= @product.description %></dd>
     <dt><%= Product.human_attribute_name(:price) %></dt>
-    <dd><%= number_to_currency @product.price %></dd>  
+    <dd><%= number_to_currency @product.price %></dd>
   </dl>
 </div>
 
@@ -44,6 +57,8 @@
     <dd><%= l @order.profile.date_of_birth %></dd>
     <dt><%= Profile.human_attribute_name(:department) %></dt>
     <dd><%= @order.profile.department %></dd>
+    <dt><%= Product.human_attribute_name(:role) %></dt>
+    <dd><%= @order.profile.role %></dd>
   </dl>
 </div>
 

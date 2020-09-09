@@ -3,7 +3,7 @@ require 'rails_helper'
 feature 'user view products' do
   scenario 'and must be sign in' do
 
-    visit root_path
+    visit products_path
 
     expect(current_path).to eq new_user_session_path
   end
@@ -20,7 +20,7 @@ feature 'user view products' do
     another_user_bombril = User.create!(email: 'sicrano@bombril.com', 
                                         password: '12345678', company: company_bombril)
     another_profile_bombril = Profile.create!(name: 'Scirano Assis', nick_name: 'Sicrano', date_of_birth: '12/10/1984', department:'RH',
-                                              role: 'Gerente de RH', company:company_bombril, user:another_user_bombril, cpf: '755.755.510-40')
+                                              role: 'Gerente de RH', company:company_bombril, user:another_user_bombril, cpf: '549.433.460-06')
     Product.create!(name: 'Celular', description: 'Samsung S10', 
                     price: 2000, category: 'Eletronico', profile: another_profile_bombril, company: company_bombril)
 

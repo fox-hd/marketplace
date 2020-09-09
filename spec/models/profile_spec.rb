@@ -27,5 +27,12 @@ RSpec.describe Profile, type: :model do
       expect(profile.errors[:role]).to include('São permitidos no maximo 30 caracteres')
     end
 
+    it 'cpf must be valid' do
+      profile = Profile.new(cpf:'33322223323')
+
+      profile.valid?
+
+      expect(profile.errors[:cpf]).to include('não é válido')
+    end
   end
 end

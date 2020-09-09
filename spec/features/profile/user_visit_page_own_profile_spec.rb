@@ -1,6 +1,13 @@
 require 'rails_helper'
 
-feature 'user profile and view your profile' do
+feature 'user visit page own profile' do
+  scenario 'and must be sign in' do
+
+    visit profiles_path
+
+    expect(current_path).to eq new_user_session_path
+  end
+
   scenario 'sucessfully' do
     company_bombril = Company.create!(name: 'Bombril', email: 'teste@bombril.com.br')
     user_bombril = User.create!(name: 'Fulano Assis', email: 'fulano@bombril.com', 

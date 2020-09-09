@@ -3,7 +3,7 @@ require 'rails_helper'
 feature 'user search product' do
   scenario 'must be sign in' do
     
-    visit root_path
+    visit products_path
 
     expect(current_path).to eq new_user_session_path
     expect(page).to have_content('Para continuar, faça login ou registre-se')

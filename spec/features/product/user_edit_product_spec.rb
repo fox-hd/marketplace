@@ -2,8 +2,15 @@ require 'rails_helper'
 
 feature 'user edit product registered' do
   scenario 'and must be sign in' do
+    company_bombril = Company.create!(name: 'Bombril', email: 'teste@bombril.com.br')
+    user_bombril = User.create!(email: 'fulano@bombril.com', 
+                                password: '12345678', company: company_bombril)
+    profile_bombril = Profile.create!(name: 'Fulano Assis', nick_name: 'Fulano', date_of_birth: '12/10/1984', department:'RH',
+                                      role: 'Gerente de RH', company:company_bombril, user:user_bombril, cpf: '755.755.510-40')
+    product = Product.create!(name: 'Computador', description: 'PC tela LCD, 16 Ram, 1TB HD, I5', 
+                    price: 2000, category: 'Eletronico', profile: profile_bombril, company: company_bombril, status: :enable)
 
-    visit root_path
+    visit edit_product_path(product)
 
     expect(current_path).to eq new_user_session_path
   end

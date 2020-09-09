@@ -3,7 +3,7 @@ require 'rails_helper'
 feature 'User register new product' do
   scenario 'and must be sign in' do
 
-    visit root_path
+    visit new_product_path
 
     expect(current_path).to eq new_user_session_path
   end

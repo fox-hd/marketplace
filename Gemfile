@@ -25,6 +25,9 @@ gem 'jbuilder', '~> 2.7'
 #Allow authentification
 gem 'devise'
 
+#Allow validate CNPJ
+gem "cpf_cnpj"
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
