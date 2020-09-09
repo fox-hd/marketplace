@@ -8,7 +8,7 @@ feature 'user visit page product to buy' do
     profile_bombril = Profile.create!(name: 'Fulano Assis', nick_name: 'Fulano', date_of_birth: '12/10/1984', department:'RH',
                                       role: 'Gerente de RH', company:company_bombril, user:user_bombril, cpf: '755.755.510-40')
     product = Product.create!(name: 'Computador', description: 'PC tela LCD, 16 Ram, 1TB HD, I5', 
-                              price: 2000, category: 'Eletronicos', profile: profile_bombril, company: company_bombril)
+                              price: 2000, category: 'Eletronicos', profile: profile_bombril, company: company_bombril, status: :enable)
 
     another_user_bombril = User.create!(email: 'sicrano@bombril.com', 
                                         password: '12345678', company: company_bombril)
@@ -37,7 +37,7 @@ feature 'user visit page product to buy' do
     profile_bombril = Profile.create!(name: 'Fulano Assis', nick_name: 'Fulano', date_of_birth: '12/10/1984', department:'RH',
                                       role: 'Gerente de RH', company:company_bombril, user:user_bombril, cpf: '755.755.510-40')
     product = Product.create!(name: 'Computador', description: 'PC tela LCD, 16 Ram, 1TB HD, I5', 
-                              price: 2000, category: 'Eletronicos', profile: profile_bombril, company: company_bombril)
+                              price: 2000, category: 'Eletronicos', profile: profile_bombril, company: company_bombril, status: :enable)
 
     another_user_bombril = User.create!(email: 'sicrano@bombril.com', 
                                         password: '12345678', company: company_bombril)
@@ -59,9 +59,6 @@ feature 'user visit page product to buy' do
     expect(page).to have_content('2.000,00')
     expect(page).to have_content('Eletronico')
     expect(page).to have_content('Compra efetuada com sucesso, aguarde confirmação do vendedor')
-    product.reload
-    expect(product).to be_waiting
-    expect(page).not_to have_link('Comprar produto', href: new_product_order_path(product))
     expect(page).to have_link('Voltar', href: products_path)
   end
 
@@ -72,7 +69,7 @@ feature 'user visit page product to buy' do
     profile_bombril = Profile.create!(name: 'Fulano Assis', nick_name: 'Fulano', date_of_birth: '12/10/1984', department:'RH',
                                       role: 'Gerente de RH', company:company_bombril, user:user_bombril, cpf: '755.755.510-40')
     product = Product.create!(name: 'Computador', description: 'PC tela LCD, 16 Ram, 1TB HD, I5', 
-                              price: 2000, category: 'Eletronicos', profile: profile_bombril, company: company_bombril)
+                              price: 2000, category: 'Eletronicos', profile: profile_bombril, company: company_bombril, status: :enable)
 
     login_as user_bombril, scope: :user
     visit root_path
@@ -89,7 +86,7 @@ feature 'user visit page product to buy' do
     profile_bombril = Profile.create!(name: 'Fulano Assis', nick_name: 'Fulano', date_of_birth: '12/10/1984', department:'RH',
                                       role: 'Gerente de RH', company:company_bombril, user:user_bombril, cpf: '755.755.510-40')
     product = Product.create!(name: 'Computador', description: 'PC tela LCD, 16 Ram, 1TB HD, I5', 
-                              price: 2000, category: 'Eletronicos', profile: profile_bombril, company: company_bombril)
+                              price: 2000, category: 'Eletronicos', profile: profile_bombril, company: company_bombril, status: :enable)
     another_user_bombril = User.create!(email: 'sicrano@bombril.com', 
                                 password: '12345678', company: company_bombril)
 

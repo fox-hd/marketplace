@@ -15,7 +15,7 @@ feature 'user edit product registered' do
     profile_bombril = Profile.create!(name: 'Fulano Assis', nick_name: 'Fulano', date_of_birth: '12/10/1984', department:'RH',
                                       role: 'Gerente de RH', company:company_bombril, user:user_bombril, cpf: '755.755.510-40')
     Product.create!(name: 'Computador', description: 'PC tela LCD, 16 Ram, 1TB HD, I5', 
-                    price: 2000, category: 'Eletronico', profile: profile_bombril, company: company_bombril)
+                    price: 2000, category: 'Eletronico', profile: profile_bombril, company: company_bombril, status: :enable)
 
     login_as user_bombril, scope: :user
     visit root_path
@@ -43,7 +43,7 @@ feature 'user edit product registered' do
     profile_bombril = Profile.create!(name: 'Fulano Assis', nick_name: 'Fulano', date_of_birth: '12/10/1984', department:'RH',
                                       role: 'Gerente de RH', company:company_bombril, user:user_bombril, cpf: '755.755.510-40')
     product = Product.create!(name: 'Computador', description: 'PC tela LCD, 16 Ram, 1TB HD, I5', 
-                    price: 2000, category: 'Eletronico', profile: profile_bombril, company: company_bombril)
+                    price: 2000, category: 'Eletronico', profile: profile_bombril, company: company_bombril, status: :enable)
 
     login_as user_bombril, scope: :user
     visit root_path

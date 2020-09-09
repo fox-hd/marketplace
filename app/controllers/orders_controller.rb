@@ -16,10 +16,22 @@ class OrdersController < ApplicationController
     @product = Product.find(params[:product_id])
     @order = Order.new(order_params)
     @order.save
-    @product.waiting!
+    @order.waiting!
+    @product.disable!
     redirect_to @product, notice: 'Compra efetuada com sucesso, aguarde confirmação do vendedor'
   end
 
+  def accept
+    @order = Order.find(params[:id])
+    @order.accept!
+    redirect_to product_order_path(@order.product, @order), notice: 'Venda finalizada'
+  end
+
+  def decline
+    @order = Order.find(params[:id])
+    @order.decline!
+    redirect_to product_order_path(@order.product, @order), notice: 'Venda recusada'
+  end
   private
 
   def order_params

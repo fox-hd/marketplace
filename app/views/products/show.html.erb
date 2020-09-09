@@ -1,14 +1,11 @@
 <h1>Detalhes do produto</h1>
-<% if @product.available? %>
+<% if @product.enable? %>
   <% if current_user.profile.present? && @product.profile_id != current_user.profile.id  %>
     <%= link_to 'Comprar produto', new_product_order_path(@product) %>
   <% end %>
 <% end %>
-<% if @product.waiting? %>
+<% if @product.disable? %>
   <h2>Esse produto não esta mais disponivel para venda</h2>
-<% end %>
-<% if @product.sold?%>
-  <h2>Esse produto já foi vendido</h2>
 <% end %>
 <div>
   <dl>

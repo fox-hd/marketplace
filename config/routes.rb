@@ -6,10 +6,13 @@ Rails.application.routes.draw do
     resources :orders, only: [:show,:new, :create]
     get 'search', on: :collection
     resources :comments, only: [:create]
-    post 'accept', on: :member
-    post 'canceled', on: :member
   end
   get 'my_products', to: 'products#my_products'
+
+  resources :orders, only:[] do
+    post 'accept', on: :member
+    post 'decline', on: :member
+  end
 
   resources :companies, only: [:index, :show]
   resources :comments, only: [] do 

@@ -1,10 +1,16 @@
 <h2>Confira os detalhes do produto e depois confirme a venda</h2>
 
-  <%= link_to 'Confirmar venda', accept_product_path(@product), method: :post %>
-  <%= link_to 'Cancelar venda', canceled_product_path(@product), method: :post %>
-  <% if @product.sold?%>
+<% if @order.waiting? %>
+  <%= link_to 'Confirmar venda', accept_order_path(@order), method: :post %>
+  <%= link_to 'Cancelar venda', decline_order_path(@order), method: :post %>
+<% end %>
+
+<% if @order.accept?%>
     <h2>Essa venda foi finalizada</h2>
-  <% end %>
+<% end %>
+<% if @order.decline? %>
+  <h2>Essa venda foi cancelada pelo vendedor</h2>
+<% end %>
 
 <h3>Dados do vendedor</h3>
 <h3><%= @product.profile.name %></h3>
@@ -37,3 +43,5 @@
     <dd><%= @order.profile.department %></dd>
   </dl>
 </div>
+
+<%= link_to 'Voltar', my_products_path %>

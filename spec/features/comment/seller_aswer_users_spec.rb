@@ -8,7 +8,7 @@ feature 'seller visit page product' do
     profile_bombril = Profile.create!(name: 'Fulano Assis', nick_name: 'Fulano', date_of_birth: '12/10/1984', department:'RH',
                                       role: 'Gerente de RH', company:company_bombril, user:user_bombril, cpf: '755.755.510-40')
     product_bombril = Product.create!(name: 'Computador', description: 'PC tela LCD, 16 Ram, 1TB HD, I5', 
-                    price: 2000, category: 'Eletronicos', profile: profile_bombril, company: company_bombril)
+                    price: 2000, category: 'Eletronicos', profile: profile_bombril, company: company_bombril, status: :enable)
     
     another_user_bombril = User.create!(email: 'sicrano@bombril.com', 
                                         password: '12345678', company: company_bombril)

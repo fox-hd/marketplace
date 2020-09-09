@@ -45,14 +45,8 @@ class ProductsController < ApplicationController
 
   def my_products
     @profile = Profile.find_by(user_id: current_user.id)
-    @products_profile = Product.where(profile: @profile)
-  end
-
-  def accept
-    @product = Product.find(params[:id])
-    @product.order
-    @product.sold!
-    redirect_to product_order_path(@product, @product.order), notice: 'Venda finalizada'
+    @products_disable = Product.where(profile: @profile).where(status: :disable)
+    @products_enable = Product.where(profile: @profile).where(status: :enable)
   end
 
   private

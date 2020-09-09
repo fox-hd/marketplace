@@ -4,7 +4,7 @@ class Product < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_one :order
 
-  enum status: {available:0 , waiting: 10, sold:20}
+  enum status: {enable:0 , disable: 10}
 
   validates :name, :description, :price, :category, presence:true
   validates :price, numericality: {greater_than: 0}
