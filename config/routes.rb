@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   end
   get 'my_products', to: 'products#my_products'
 
-  resources :orders, only:[] do
+  resources :orders, only:[:index] do
     post 'accept', on: :member
     post 'decline', on: :member
   end

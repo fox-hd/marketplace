@@ -1,8 +1,11 @@
 <h2>Confira os detalhes do produto e depois confirme a venda</h2>
 
-<% if @order.waiting? %>
+<% if @order.product.profile.user_id == current_user.id && @order.waiting? %>
   <%= link_to 'Confirmar venda', accept_order_path(@order), method: :post %>
   <%= link_to 'Cancelar venda', decline_order_path(@order), method: :post %>
+<% end %>
+<% if @order.waiting? %>
+  <h2>Aguardando confirmação do vendedor</h2>
 <% end %>
 
 <% if @order.accept?%>

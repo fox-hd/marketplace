@@ -1,6 +1,9 @@
 class OrdersController < ApplicationController
-  before_action :authenticate_user!, only: [:show, :new, :create]
+  before_action :authenticate_user!, only: [:index,:show, :new, :create]
 
+  def index
+    @orders = Order.where(profile_id: current_user.profile.id)
+  end
 
   def show
     @product = Product.find(params[:product_id])
