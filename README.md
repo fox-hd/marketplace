@@ -1,7 +1,7 @@
 # README
+<h1>Marketplace</h1>
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+<h2>This project is an internal marketplace for a company</h2>
 
 Things you may want to cover:
 
@@ -9,17 +9,23 @@ Things you may want to cover:
 
 * Rails version 6.0.3.2
 
-* System dependencies
+* SQLite3
 
-* Configuration
-<li>run: bin/setup</li>
+System dependencies
 
-* Database creation
+* <a href="https://github.com/heartcombo/devise">devise</a>
 
-* Database initialization
+* <a href="https://github.com/fnando/cpf_cnpj">validator CPF/CNPJ</a>
 
-* How to run the test suite
-<li>run: rspec</li>
+Getting started
+
+* run on console: bin/setup
+ 
+* run on console: rails db:migrate
+
+How to run the test suite
+
+* run on console: rspec
 
 
 

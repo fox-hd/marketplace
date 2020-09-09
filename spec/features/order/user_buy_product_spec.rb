@@ -167,4 +167,32 @@ feature 'user visit page product to buy' do
 
     expect(page).not_to have_link('Comprar produto', href: new_product_order_path(product))
   end
+
+  scenario '  cannot buy if the product is sold' do
+    company_bombril = Company.create!(name: 'Bombril', email: 'teste@bombril.com.br')
+    fulano_user = User.create!(email: 'fulano@bombril.com', 
+                                password: '12345678', company: company_bombril)
+    fulano_profile = Profile.create!(name: 'Fulano Assis', nick_name: 'Fulano', date_of_birth: '12/10/1984', department:'RH',
+                                      role: 'Gerente de RH', company:company_bombril, user:fulano_user, cpf: '755.755.510-40')
+    product_pc = Product.create!(name: 'Computador', description: 'PC tela LCD, 16 Ram, 1TB HD, I5', 
+                    price: 2000, category: 'Eletronico', profile: fulano_profile, company: company_bombril, status: :disable)
+
+    sicrano_user = User.create!(email: 'sicrano@bombril.com', 
+                                        password: '12345678', company: company_bombril)
+    sicrano_profile = Profile.create!(name: 'Sicrano Assis', nick_name: 'Sicrano', date_of_birth: '12/10/1984', department:'RH',
+                                              role: 'Gerente de RH', company:company_bombril, user:sicrano_user, cpf: '549.433.460-06')
+    order = Order.create!(product:product_pc, profile: sicrano_profile, body: 'Podemos combinar a entrega?', status: :accept)
+
+    alano_user = User.create!(email: 'alano@bombril.com', 
+                              password: '12345678', company: company_bombril)
+    alano_profile = Profile.create!(name: 'Alano Assis', nick_name: 'Sicrano', date_of_birth: '12/10/1984', department:'RH',
+                                    role: 'Gerente de RH', company:company_bombril, user:alano_user, cpf: '766.453.630-87')
+  
+    login_as alano_user, scope: :user
+    visit root_path
+    click_on 'Loja'
+    click_on 'Computador'
+
+    expect(page).not_to have_link('Comprar produto', href:new_product_order_path(product_pc) )
+  end
 end

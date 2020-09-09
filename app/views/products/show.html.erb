@@ -1,7 +1,7 @@
 <h1>Detalhes do produto</h1>
 <% if @product.enable? %>
   <% if current_user.profile.present? && @product.profile_id != current_user.profile.id  %>
-    <%= link_to 'Comprar produto', new_product_order_path(@product) %>
+    <%= link_to 'Comprar produto', new_product_order_path(@product) %>##verificar essa condicao
   <% end %>
 <% end %>
 <% if @product.disable? %>
