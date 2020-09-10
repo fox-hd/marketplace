@@ -40,7 +40,7 @@ feature 'user edit product registered' do
     expect(page).to have_content('Modelo XKS 18 amrchas, aro 29')
     expect(page).to have_content('900')
     expect(page).to have_content('Esporte e Lazer')
-    expect(page).to have_link('Voltar', href: products_path)
+    expect(page).to have_link('Voltar', href: root_path)
   end
 
   scenario 'and attributes cannot be blank' do

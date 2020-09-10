@@ -9,7 +9,7 @@
     <h2>Produtos disponiveis para venda</h2>
       <% @products_enable.each do |product| %>
       <%= link_to 'Ver detalhes', product_path(product) %>
-      <%= link_to 'Desativar anuncio', disable_product_path(product) %>
+      <%= link_to 'Desativar anuncio', disable_product_path(product), method: :post %>
       <dl>
         <dt><%= Product.human_attribute_name(:category) %></dt>
         <dd><%= product.category %></dd>
@@ -67,7 +67,7 @@
       <h2>Anuncio cancelado</h2>
       <% @products_canceled.each do |product_canceled| %>
         <%= link_to 'Ver detalhes', product_path(product_canceled) %>
-        <%= link_to 'Reativar anuncio', enable_product_path(product_canceled) %>
+        <%= link_to 'Reativar anuncio', enable_product_path(product_canceled), method: :post %>
         <dl>
         <dt><%= Product.human_attribute_name(:category) %></dt>
         <dd><%= product_canceled.category %></dd>

@@ -18,8 +18,8 @@
 <h3>Dados do vendedor</h3>
 <div>
   <dl>
-    <dt><%= Profile.human_attribute_name(:name) %><</dt>
-    <dd><%= @product.profile.name %><</dd>
+    <dt><%= Profile.human_attribute_name(:name) %></dt>
+    <dd><%= @product.profile.name %></dd>
     <dt><%= Profile.human_attribute_name(:cpf) %></dt>
     <dd><%= @product.profile.cpf %></dd>
     <dt><%= Profile.human_attribute_name(:date_of_birth) %></dt>
@@ -61,5 +61,13 @@
     <dd><%= @order.profile.role %></dd>
   </dl>
 </div>
+<div>
+<h2>Comentarios</h2>
+<%= @order.body %>
+</div>
 
+<% if @product.profile == current_user.profile%>
 <%= link_to 'Voltar', my_products_path %>
+<% else %>
+<%= link_to 'Voltar', orders_path %>
+<% end %>

@@ -13,8 +13,15 @@
 <div>
   <% if @products.enable.present? %>
   <p>Produtos anunciados</p>
-    <% @products.each do |product| %>
-      <%= link_to product.name, product_path(product) %> ||
+    <% @products.enable.each do |product| %>
+      <dl>
+        <dt><%= Product.human_attribute_name(:category) %></dt>
+        <dd><%= product.category %></dd>
+        <dt><%= Product.human_attribute_name(:name) %></dt>
+        <dd><%= link_to product.name, product_path(product) %></dd>
+        <dt><%= Product.human_attribute_name(:price) %></dt>
+        <dd><%= product.category %></dd>
+    </dl>
     <% end %>
   <% end %>
 </div>

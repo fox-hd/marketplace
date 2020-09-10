@@ -3,6 +3,8 @@
   <h2>Produto disponivel</h2>
   <% if current_user.profile.present? && @product.profile_id != current_user.profile.id  %>
     <%= link_to 'Comprar produto', new_product_order_path(@product) %>
+  <% else %>
+    <h2>Seu anuncio</h2>
   <% end %>
 <% end %>
 <% if @product.disable? %>

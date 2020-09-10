@@ -1,6 +1,16 @@
 <h1>Resultado da pesquisa</h1>
 
 
-<%= render @products.enable %>
-
+<% @products.enable.each do |product| %>
+  <div>
+    <dl>
+    <dt><%= Product.human_attribute_name(:category) %></dt>
+    <dd><%= product.category %></dd>
+    <dt><%= Product.human_attribute_name(:product) %></dt>
+    <dd><%= link_to product.name, product_path(product) %></dd>
+    <dt><%= Product.human_attribute_name(:price) %></dt>
+    <dd><%= number_to_currency product.price %></dd>
+    </dl>
+  </div>
+<% end %>
 <%= link_to 'Voltar para loja', products_path %>

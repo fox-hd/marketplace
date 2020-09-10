@@ -257,4 +257,36 @@ feature 'user search product' do
     expect(page).not_to have_content('Bicicleta vermelha')
     expect(page).to have_link('Voltar para loja', href: products_path)
   end
+
+  scenario 'and cannot find if product is sold' do
+    company_bombril = Company.create!(name: 'Bombril', email: 'teste@bombril.com.br')
+    user_bombril = User.create!(email: 'fulano@bombril.com', 
+                                password: '12345678', company: company_bombril)
+    profile_bombril = Profile.create!(name: 'Fulano Assis', nick_name: 'Fulano', date_of_birth: '12/10/1984', department:'RH',
+                                      role: 'Gerente de RH', company:company_bombril, user:user_bombril, cpf: '755.755.510-40')
+    bike_red = Product.create!(name: 'Bicicleta vermelha', description: 'Caloi , 18 marchas, aro 29', 
+                               price: 2000, category: 'Esporte e Lazer', profile: profile_bombril, company: company_bombril, status: :sold)
+    bike_green = Product.create!(name: 'Bicicleta verde', description: 'Modelo XKS, 18 marchas, aro 26', 
+                                 price: 4000, category: 'Esporte e Lazer', profile: profile_bombril, company: company_bombril, status: :enable)
+    bike_blue = Product.create!(name: 'Bicicleta azul', description: 'Modelo XKS, 18 marchas, aro 29', 
+                                  price: 3000, category: 'Esporte e Lazer', profile: profile_bombril, company: company_bombril, status: :enable)
+
+    another_user_bombril = User.create!(email: 'beltrano@bombril.com', 
+                                password: '12345678', company: company_bombril)
+    another_profile_bombril = Profile.create!(name: 'Beltrano Assis', nick_name: 'Beltrano', date_of_birth: '12/10/1984', department:'RH',
+                                      role: 'Gerente de RH', company:company_bombril, user:another_user_bombril, cpf: '882.608.130-17')
+    
+    order = Order.create!(product:bike_red, profile: another_profile_bombril, body: 'Podemos combinar a entrega?', status: :accept)
+    
+    login_as another_user_bombril, scope: :user
+    visit root_path
+    click_on 'Loja'
+    fill_in 'Pesquisar produtos' , with:'Esporte e Lazer'
+    click_on 'Pesquisar'
+    
+    expect(page).to have_content('Bicicleta azul')
+    expect(page).to have_content('Bicicleta verde')
+    expect(page).not_to have_content('Bicicleta vermelha')
+    expect(page).to have_link('Voltar para loja', href: products_path)
+  end
 end

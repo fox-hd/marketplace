@@ -18,7 +18,7 @@ class ProductsController < ApplicationController
     @product.company_id = current_user.company_id
     @product.profile_id = current_user.profile.id
     if @product.save
-      redirect_to @product
+      redirect_to my_products_path, notice: 'Produto cadatrado com sucesso'
     else
       render :new
     end
@@ -32,7 +32,7 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     @product.update(product_params)
     if @product.save
-      redirect_to @product
+      redirect_to my_products_path, notice: 'Alteração feita com sucesso'
     else
       render :edit
     end
