@@ -1,41 +1,89 @@
 <div>
-  <% if @profile.nil? %>
-    <h3>Para comprar ou vender produtos é necessario completar o cadastro</h3>
-    <%= link_to 'Completar cadastro', new_profile_path %>
-  <% else %>
+<% if @profile.nil? %>
+  <h3>Para comprar ou vender produtos é necessario completar o cadastro</h3>
+  <%= link_to 'Completar cadastro', new_profile_path %>
+<% else %>
   <%= link_to 'Anunciar produtos', new_product_path %>
-  <% end %>
+  <nav>
+  <% if @products_enable.present? %>
+    <h2>Produtos disponiveis para venda</h2>
+      <% @products_enable.each do |product| %>
+      <%= link_to 'Ver detalhes', product_path(product) %>
+      <%= link_to 'Desativar anuncio', disable_product_path(product) %>
+      <dl>
+        <dt><%= Product.human_attribute_name(:category) %></dt>
+        <dd><%= product.category %></dd>
+        <dt><%= Product.human_attribute_name(:name) %> </dt>
+        <dd><%= product.name %></dd>
+        <dt><%= Product.human_attribute_name(:description) %> </dt>
+        <dd><%= product.description %></dd>
+        <dt><%= Product.human_attribute_name(:price) %></dt>
+        <dd><%= number_to_currency product.price %></dd>
+      </dl>      
+      <% end %>
+    <% end %>
+  </nav>
+
+  <nav>
+    <% if @products_disable.present? %>
+      <h2>Aguardando confirmação de venda</h2>
+      <% @products_disable.each do |product_waiting| %>
+        <%= link_to 'Ver detalhes', product_order_path(product_waiting, product_waiting.order) %>
+        <dl>
+          <dt>Comprador</dt>
+          <dd><%= product_waiting.order.profile.name %>  </dd>
+          <dt><%= Product.human_attribute_name(:name) %></dt>
+          <dd><%= product_waiting.name %></dd>
+        </dl>
+      <% end %>
+    <% end %>
+  </nav>
+
+  <nav>
+    <% if @products_sold.present? %>
+      <h2>Produtos vendidos</h2>
+      <% @products_sold.each do |product_sold| %>
+        <%= link_to 'Ver detalhes', product_order_path(product_sold, product_sold.order) %>
+        <dl>
+          <dt>Comprador</dt>
+          <dd><%= product_sold.order.profile.name %>  </dd>
+          <dt><%= Product.human_attribute_name(:name) %></dt>
+          <dd><%= product_sold.name %></dd>
+          <dt><%= Product.human_attribute_name(:category) %></dt>
+          <dd><%= product_sold.category %></dd>
+          <dt><%= Product.human_attribute_name(:name) %> </dt>
+          <dd><%= product_sold.name %></dd>
+          <dt><%= Product.human_attribute_name(:description) %> </dt>
+          <dd><%= product_sold.description %></dd>
+          <dt><%= Product.human_attribute_name(:price) %></dt>
+          <dd><%= number_to_currency product_sold.price %></dd>
+        </dl>
+      <% end %>
+    <% end %>
+  </nav>
+
+  <nav>
+    <% if @products_canceled.present? %>
+      <h2>Anuncio cancelado</h2>
+      <% @products_canceled.each do |product_canceled| %>
+        <%= link_to 'Ver detalhes', product_path(product_canceled) %>
+        <%= link_to 'Reativar anuncio', enable_product_path(product_canceled) %>
+        <dl>
+        <dt><%= Product.human_attribute_name(:category) %></dt>
+        <dd><%= product_canceled.category %></dd>
+        <dt><%= Product.human_attribute_name(:name) %> </dt>
+        <dd><%= product_canceled.name %></dd>
+        <dt><%= Product.human_attribute_name(:description) %> </dt>
+        <dd><%= product_canceled.description %></dd>
+        <dt><%= Product.human_attribute_name(:price) %></dt>
+        <dd><%= number_to_currency product_canceled.price %></dd>
+      </dl>
+      <% end %>
+    <% end %>
+  </nav>
+
+<% end %>
 </div>
 
-<nav>
-  <% if @products_enable.present? %>
-  <p>Produtos disponiveis para venda</p>
-    <% @products_enable.each do |product| %>
-    <dl>
-      <dt><%= Product.human_attribute_name(:category) %></dt>
-      <dd><%= product.category %></dd>
-      <dt><%= Product.human_attribute_name(:name) %> </dt>
-      <dd><%= link_to product.name, product_path(product) %></dd>
-      <dt><%= Product.human_attribute_name(:price) %></dt>
-      <dd><%= product.price %></dd>
-    </dl>
-    <% end %>
-  <% end %>
-</nav>
-
-<nav>
-  <% if @products_disable.present? %>
-    <h2>Aguardando confirmação de venda</h2>
-    <% @products_disable.each do |product_waiting| %>
-    <dl>
-      <dt>Comprador</dt>
-      <dd><%= product_waiting.order.profile.name %>  </dd>
-      <dt><%= Product.human_attribute_name(:name) %></dt>
-      <dd><%= product_waiting.name %></dd>
-    </dl>
-      <%= link_to 'Ver detalhes', product_order_path(product_waiting, product_waiting.order) %>
-    <% end %>
-  <% end %>
-</nav>
 
 <%= link_to 'Voltar', root_path %>

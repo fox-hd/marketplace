@@ -27,7 +27,7 @@ feature 'user edit product registered' do
     login_as user_bombril, scope: :user
     visit root_path
     click_on 'Meus anuncios'
-    click_on 'Computador'
+    click_on 'Ver detalhes'
     click_on 'Editar anuncio'
 
     fill_in 'Produto', with: 'Bicicleta'
@@ -55,7 +55,7 @@ feature 'user edit product registered' do
     login_as user_bombril, scope: :user
     visit root_path
     click_on 'Meus anuncios'
-    click_on 'Computador'
+    click_on 'Ver detalhes'
     click_on 'Editar anuncio'
 
     fill_in 'Produto', with: ''

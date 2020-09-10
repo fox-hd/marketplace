@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
   before_action :authenticate_user!, only: [:index,:show, :new, :create]
 
   def index
-    @orders = Order.where(profile_id: current_user.profile.id)
+    @orders = Order.where(profile_id: current_user.profile)
   end
 
   def show
@@ -27,12 +27,14 @@ class OrdersController < ApplicationController
   def accept
     @order = Order.find(params[:id])
     @order.accept!
+    @order.product.sold!
     redirect_to product_order_path(@order.product, @order), notice: 'Venda finalizada'
   end
 
   def decline
     @order = Order.find(params[:id])
     @order.decline!
+    @order.product.enable!
     redirect_to product_order_path(@order.product, @order), notice: 'Venda recusada'
   end
   private

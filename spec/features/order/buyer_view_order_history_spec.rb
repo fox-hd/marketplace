@@ -54,7 +54,7 @@ feature 'user view order history' do
     expect(page).to have_content('2.000,00')
     expect(page).to have_content('Fulano Assis')
     expect(order_pc).to be_accept
-    expect(page).to have_content('edidos cancelados pelo vendedor')
+    expect(page).to have_content('Pedidos cancelados pelo vendedor')
     expect(page).to have_content('Mesa')
     expect(page).to have_content('900,00')
     expect(page).to have_content('Alano Assis')

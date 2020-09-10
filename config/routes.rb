@@ -6,6 +6,8 @@ Rails.application.routes.draw do
     resources :orders, only: [:show,:new, :create]
     get 'search', on: :collection
     resources :comments, only: [:create]
+    get 'enable', on: :member
+    get 'disable', on: :member
   end
   get 'my_products', to: 'products#my_products'
 

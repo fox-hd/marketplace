@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :authenticate_user!, only: [:index, :show, :new, :create, :edit, :upgrade]
+  before_action :authenticate_user!, only: [:index, :show, :new, :create, :edit, :upgrade, :my_products]
 
   def index
     @products = Product.where(company: current_user.company)
@@ -47,6 +47,21 @@ class ProductsController < ApplicationController
     @profile = Profile.find_by(user_id: current_user.id)
     @products_disable = Product.where(profile: @profile).where(status: :disable)
     @products_enable = Product.where(profile: @profile).where(status: :enable)
+    @products_sold = Product.where(profile: @profile).where(status: :sold)
+    @products_canceled = Product.where(profile: @profile).where(status: :canceled)
+  end
+
+
+  def enable
+    @product = Product.find(params[:id])
+    @product.enable!
+    redirect_to my_products_path, notice: 'Anuncio reativado'
+  end
+
+  def disable
+    @product = Product.find(params[:id])
+    @product.canceled!
+    redirect_to my_products_path, notice: 'Anuncio desativado'
   end
 
   private

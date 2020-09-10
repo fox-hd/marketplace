@@ -168,7 +168,7 @@ feature 'user visit page product to buy' do
     expect(page).not_to have_link('Comprar produto', href: new_product_order_path(product))
   end
 
-  scenario '  cannot buy if the product is sold' do
+  scenario 'and product canceled not is visible' do
     company_bombril = Company.create!(name: 'Bombril', email: 'teste@bombril.com.br')
     fulano_user = User.create!(email: 'fulano@bombril.com', 
                                 password: '12345678', company: company_bombril)
@@ -191,8 +191,7 @@ feature 'user visit page product to buy' do
     login_as alano_user, scope: :user
     visit root_path
     click_on 'Loja'
-    click_on 'Computador'
 
-    expect(page).not_to have_link('Comprar produto', href:new_product_order_path(product_pc) )
+    expect(page).not_to have_link('Computador', href:product_path(product_pc) )
   end
 end

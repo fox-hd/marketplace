@@ -1,23 +1,10 @@
 <h2>Meus pedidos</h2>
-
-<%  if @orders.waiting %>
-  <h3>Pedidos aguardado confirmação do vendedor</h3>
-  <% @orders.waiting.each do |order| %>
-  <dl>
-    <dt> <% Product.human_attribute_name(:name) %> </dt>
-    <dd><%= order.product.name %></dd>
-    <dt> <% Product.human_attribute_name(:price) %> </dt>
-    <dd><%= number_to_currency order.product.price %></dd>
-    <dt>Vendedor</dt>
-    <dt><%= order.product.profile.name %></dt>
-  </dl>
-    <%= link_to 'Ver detalhes', product_order_path(order.product_id, order) %>
-  <% end %>
-<% end %>
-
-<%  if @orders.accept %>
-  <h3>Pedidos finalizados</h3>
-  <% @orders.accept.each do |order| %>
+<% if @orders.blank?%>
+  <h2>Não há pedidos</h2>
+<% else %>
+  <%  if @orders.waiting %>
+    <h3>Pedidos aguardado confirmação do vendedor</h3>
+    <% @orders.waiting.each do |order| %>
     <dl>
       <dt> <% Product.human_attribute_name(:name) %> </dt>
       <dd><%= order.product.name %></dd>
@@ -26,21 +13,40 @@
       <dt>Vendedor</dt>
       <dt><%= order.product.profile.name %></dt>
     </dl>
-    <%= link_to 'Ver detalhes', product_order_path(order.product_id, order) %>
+      <%= link_to 'Ver detalhes', product_order_path(order.product_id, order) %>
+    <% end %>
+  <% end %>
+
+  <%  if @orders.accept %>
+    <h3>Pedidos finalizados</h3>
+    <% @orders.accept.each do |order| %>
+      <dl>
+        <dt> <% Product.human_attribute_name(:name) %> </dt>
+        <dd><%= order.product.name %></dd>
+        <dt> <% Product.human_attribute_name(:price) %> </dt>
+        <dd><%= number_to_currency order.product.price %></dd>
+        <dt>Vendedor</dt>
+        <dt><%= order.product.profile.name %></dt>
+      </dl>
+      <%= link_to 'Ver detalhes', product_order_path(order.product_id, order) %>
+    <% end %>
+  <% end %>
+
+  <%  if @orders.decline %>
+    <h3>Pedidos cancelados pelo vendedor</h3>
+    <% @orders.decline.each do |order| %>
+      <dl>
+        <dt> <% Product.human_attribute_name(:name) %> </dt>
+        <dd><%= order.product.name %></dd>
+        <dt> <% Product.human_attribute_name(:price) %> </dt>
+        <dd><%= number_to_currency order.product.price %></dd>
+        <dt>Vendedor</dt>
+        <dt><%= order.product.profile.name %></dt>
+      </dl>
+      <%= link_to 'Ver detalhes', product_order_path(order.product_id, order) %>
+    <% end %>
   <% end %>
 <% end %>
 
-<%  if @orders.decline %>
-  <h3>Pedidos cancelados pelo vendedor</h3>
-  <% @orders.decline.each do |order| %>
-    <dl>
-      <dt> <% Product.human_attribute_name(:name) %> </dt>
-      <dd><%= order.product.name %></dd>
-      <dt> <% Product.human_attribute_name(:price) %> </dt>
-      <dd><%= number_to_currency order.product.price %></dd>
-      <dt>Vendedor</dt>
-      <dt><%= order.product.profile.name %></dt>
-    </dl>
-    <%= link_to 'Ver detalhes', product_order_path(order.product_id, order) %>
-  <% end %>
-<% end %>
+
+<%= link_to 'Voltar', root_path %>

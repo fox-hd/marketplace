@@ -11,7 +11,7 @@
 
 
 <div>
-  <% if @products.present? %>
+  <% if @products.enable.present? %>
   <p>Produtos anunciados</p>
     <% @products.each do |product| %>
       <%= link_to product.name, product_path(product) %> ||
