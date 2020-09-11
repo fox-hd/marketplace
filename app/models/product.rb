@@ -3,6 +3,7 @@ class Product < ApplicationRecord
   belongs_to :company
   has_many :comments, dependent: :destroy
   has_one :order
+  has_one_attached :image
 
   enum status: {enable:0 , disable: 10, sold: 20, canceled: 30}
 

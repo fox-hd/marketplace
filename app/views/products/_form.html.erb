@@ -21,5 +21,9 @@
                                                       ['Móveis'],['Eletrodomesticos'],
                                                       ['Brinquedos e Bebês'],['Moda e Beleza']]), prompt:'Escolha uma opção' %>
       </div>
+      <div>
+        <div><%= f.label :image, 'Foto' %></div>
+        <div><%= f.file_field :image %></div>
+      </div>
     <%= f.submit 'Anunciar' %>
 <% end %><br>

@@ -35,12 +35,13 @@ feature 'User register new product' do
     fill_in 'Descrição', with: 'Modelo Dell Inspiron, 15 pol, 1TB HD, 16ram, i7'
     fill_in 'Preço', with: '2000'
     select 'Eletronicos', from: 'Categoria'
+    attach_file 'Foto', Rails.root.join('spec/support/maquina_foto.jpeg')
     click_on 'Anunciar'
 
     expect(page).to have_content('Notebook')
     expect(page).to have_content('Modelo Dell Inspiron, 15 pol, 1TB HD, 16ram, i7')
     expect(page).to have_content('2.000,00')
-    expect(page).to have_content('Eletronico')
+    expect(page).to have_content('Eletronicos')
   end
 
   scenario 'and must fill all fields' do

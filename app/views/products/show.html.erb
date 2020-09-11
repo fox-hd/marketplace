@@ -11,18 +11,26 @@
   <h2>Esse produto não esta mais disponivel para venda</h2>
 <% end %>
 <div>
+  <% if @product.image.attached? %>
+    <%= image_tag @product.image %>
+  <% end %>
+</div>
+<div>
   <dl>
-  <dt><%= Product.human_attribute_name(:category) %></dt>
-  <dd><%= @product.category %></dd>
-  <dt><%= Product.human_attribute_name(:name) %></dt>
-  <dd><%= @product.name %></dd>
-  <dt><%= Product.human_attribute_name(:description) %></dt>
-  <dd><%= @product.description %></dd>
-  <dt><%= Product.human_attribute_name(:price) %></dt>
-  <dd><%= number_to_currency @product.price %></dd>
-  <dt>Vendedor</dt>
-  <dd><%= @product.profile.name %></dd>
+    <dt><%= Product.human_attribute_name(:category) %></dt>
+    <dd><%= @product.category %></dd>
+    <dt><%= Product.human_attribute_name(:name) %></dt>
+    <dd><%= @product.name %></dd>
+    <dt><%= Product.human_attribute_name(:description) %></dt>
+    <dd><%= @product.description %></dd>
+    <dt><%= Product.human_attribute_name(:price) %></dt>
+    <dd><%= number_to_currency @product.price %></dd>
+    <dt>Vendedor</dt>
+    <dd><%= @product.profile.name %></dd>
+    <dt>Imagem do produto</dt>
   </dl>
+
+
 </div>
 
 
