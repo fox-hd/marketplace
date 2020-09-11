@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_11_165319) do
+ActiveRecord::Schema.define(version: 2020_09_11_191901) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -39,6 +39,16 @@ ActiveRecord::Schema.define(version: 2020_09_11_165319) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["comment_id"], name: "index_answers_on_comment_id"
+  end
+
+  create_table "chats", force: :cascade do |t|
+    t.integer "order_id", null: false
+    t.integer "profile_id", null: false
+    t.text "body"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["order_id"], name: "index_chats_on_order_id"
+    t.index ["profile_id"], name: "index_chats_on_profile_id"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -115,6 +125,8 @@ ActiveRecord::Schema.define(version: 2020_09_11_165319) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "answers", "comments"
+  add_foreign_key "chats", "orders"
+  add_foreign_key "chats", "profiles"
   add_foreign_key "comments", "products"
   add_foreign_key "comments", "profiles"
   add_foreign_key "orders", "products"

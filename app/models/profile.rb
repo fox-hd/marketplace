@@ -4,6 +4,7 @@ class Profile < ApplicationRecord
   has_many :products, dependent: :destroy
   has_many :comments , dependent: :destroy
   has_many :order
+  has_many :chats
 
   validates :name, :nick_name, :date_of_birth, 
             :department, :role, :cpf, presence: true

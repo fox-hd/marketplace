@@ -62,8 +62,26 @@
   </dl>
 </div>
 <div>
-<h2>Comentarios</h2>
-<%= @order.body %>
+<span>Observação: </span>sp
+  <%= @order.body %>
+</div><br>
+<strong>Chat</strong>
+<div id="comment-product">
+  <% @order.chats.each do |chat| %>
+    <div class="ac_box_top">
+      <div class="ac_box_cont">
+        <%= "Usuário:  #{chat.profile.name}" %><br>
+        <%=  chat.body %><br>
+      </div>
+    </div>  
+  <% end %>
+</div>
+<div>
+  <%= form_with model: [@order, @order.chats.build], local:true do |f| %>
+    <div><%= f.label :body, 'Chat' %></div>
+    <div><%= f.text_field :body %></div>
+    <div><%= f.submit 'Enviar' %></div>
+<% end %>
 </div>
 
 <% if @product.profile == current_user.profile%>
