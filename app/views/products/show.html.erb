@@ -10,7 +10,7 @@
 <% if @product.disable? %>
   <h2>Esse produto não esta mais disponivel para venda</h2>
 <% end %>
-<div>
+  <div>
   <% if @product.image.attached? %>
     <%= image_tag @product.image %>
   <% end %>

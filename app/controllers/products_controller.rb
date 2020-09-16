@@ -63,6 +63,11 @@ class ProductsController < ApplicationController
     @product.canceled!
     redirect_to my_products_path, notice: 'Anuncio desativado'
   end
+  
+  def status
+    @product = Product.find(params[:id])
+    @order = @product.order
+  end
 
   private
 

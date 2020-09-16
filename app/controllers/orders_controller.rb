@@ -28,14 +28,14 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
     @order.accept!
     @order.product.sold!
-    redirect_to product_order_path(@order.product, @order), notice: 'Venda finalizada'
+    redirect_to status_product_path(@order.product, @order), notice: 'Venda finalizada'
   end
 
   def decline
     @order = Order.find(params[:id])
     @order.decline!
     @order.product.enable!
-    redirect_to product_order_path(@order.product, @order), notice: 'Venda recusada'
+    redirect_to status_product_path(@order.product, @order), notice: 'Venda recusada'
   end
   private
 

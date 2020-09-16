@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resources :comments, only: [:create]
     post 'enable', on: :member
     post 'disable', on: :member
+    get 'status', on: :member
   end
   get 'my_products', to: 'products#my_products'
 

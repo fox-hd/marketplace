@@ -19,8 +19,8 @@ marcio = User.create!(email: 'marcio@danone.com.br', password: '12345678')
                                     role: 'Analista', company:danone, user:leticia, cpf: '445.080.870-35')
   pedro_profile = Profile.create!(name: 'Pedro Alcantara', nick_name: 'Pedro', date_of_birth: '12/10/1994', department:'Marketing',
                           role: 'Gerente de Marketing', company:danone, user:pedro, cpf: '084.687.030-44')
-  marcio_profile = Profile.create!(name: 'Pedro Alcantara', nick_name: 'Pedro', date_of_birth: '12/10/1994', department:'Marketing',
-                          role: 'Gerente de Marketing', company:danone, user:marcio, cpf: '234.049.140-15')
+  marcio_profile = Profile.create!(name: 'Marcio Pereira', nick_name: 'Marcio', date_of_birth: '12/10/1994', department:'TI',
+                          role: 'Coordenador', company:danone, user:marcio, cpf: '234.049.140-15')
 
   product_augusto_note = Product.create!(name: 'Notebook', description: 'Notebook DELL de 15", Intel Core, HD 1TB, memoria  8GB',
                                     price: 2000, category: 'Eletronicos', profile: augusto_profile, company: danone, status: :enable)

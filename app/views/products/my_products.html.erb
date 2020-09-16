@@ -28,7 +28,7 @@
     <% if @products_disable.present? %>
       <h2>Aguardando confirmação de venda</h2>
       <% @products_disable.each do |product_waiting| %>
-        <%= link_to 'Ver detalhes', product_order_path(product_waiting, product_waiting.order) %>
+        <%= link_to 'Ver detalhes', status_product_path(product_waiting, product_waiting.order) %>
         <dl>
           <dt>Comprador</dt>
           <dd><%= product_waiting.order.profile.name %>  </dd>
@@ -43,7 +43,7 @@
     <% if @products_sold.present? %>
       <h2>Produtos vendidos</h2>
       <% @products_sold.each do |product_sold| %>
-        <%= link_to 'Ver detalhes', product_order_path(product_sold, product_sold.order) %>
+        <%= link_to 'Ver detalhes', status_product_path(product_sold, product_sold.order) %>
         <dl>
           <dt>Comprador</dt>
           <dd><%= product_sold.order.profile.name %>  </dd>
