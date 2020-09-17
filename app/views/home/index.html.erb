@@ -1,13 +1,9 @@
 <div id="g-home">
   <% if user_signed_in? %>
     <%= link_to 'Sair', destroy_user_session_path, method: :delete %>
-  <% else %>
-    <%= link_to 'Entrar', new_user_session_path %>
-  <% end %>
-
   <header>
-    <% if @profile.present? %>
-      <h2>Olá, <%= @profile.name.capitalize %></h2>
+    <% if current_user.profile.present? %>
+      <h2>Olá, <%= current_user.profile.name.capitalize %></h2>
     <% end %>
     <h2>Bem vindo ao Marketplace</h2>
   </header>
@@ -22,3 +18,18 @@
     </ul>
   </div>
 </div>
+
+  <% else %>
+    <nav class="nav">
+      <h1>Marketplace</h1>
+      <h3>Empresas cadastradas ate o momento</h3>
+      <% @companies.each do |company| %>
+        <%= company.name %>
+      <% end %>
+      <h3>
+        <%= link_to 'Entrar', new_user_session_path %><br>
+        <%= link_to 'Registrar-se', new_user_registration_path %>
+      </h2>
+    </nav>
+  <% end %>
+

@@ -5,7 +5,8 @@ feature 'visit hompage with company registered' do
 
     visit root_path
 
-    expect(current_path).to eq new_user_session_path
+    expect(page).to have_link('Entrar', href:new_user_session_path)
+    expect(page).to have_link('Registrar-se', href:new_user_registration_path)
   end
 
   scenario 'and already was registrer' do
@@ -14,6 +15,7 @@ feature 'visit hompage with company registered' do
                         password: '12345678', company: company)
 
     visit root_path
+    click_on 'Entrar'
     fill_in 'E-mail', with: 'fulano@bombril.com'
     fill_in 'Senha', with: '12345678'
     click_on 'Entrar'
@@ -28,6 +30,7 @@ feature 'visit hompage with company registered' do
                         password: '12345678', company: company)
     
     visit root_path
+    click_on 'Entrar'
     fill_in 'E-mail', with: 'fulano@bombril.com'
     fill_in 'Senha', with: '12345678'
     click_on 'Entrar'

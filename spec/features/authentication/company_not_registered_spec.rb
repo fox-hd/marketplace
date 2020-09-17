@@ -19,6 +19,7 @@ feature 'Company not has register' do
     Company.create!(name: 'Bombril', email: 'test@bombril.com.br')
 
     visit root_path
+    click_on 'Entrar'
     fill_in 'E-mail', with: 'fulano@bombril.com'
     fill_in 'Senha', with: '12345678'
     click_on 'Entrar'
